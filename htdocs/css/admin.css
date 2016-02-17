@@ -1,0 +1,56 @@
+body,html { height:100%;   }
+body { }
+ul.listing-show { margin:0px; padding:0px;}
+ul.listing-show li { list-style:none; display:inline-block; float:left; padding-right:20px;  }
+ul.listing-show li a { color:#fff; font-size:1.5em; display:block; text-decoration:none;}
+ul.listing-show li a.active { font-weight:bold; opacity:1;}
+ul.listing-show li a.new { opacity:0.5;}
+ul.listing-show li a:hover { text-decoration:none; opacity:1;}
+ul.listing-show li a i { line-height:0; font-size:0.8; vertical-align:middle;}
+h3 { margin:0px; margin-top:10px; display:block; }
+.form-show, .form-podcast { padding:20px; }
+.listing-show {}
+form .row { padding-right:10px; border-right:inherit; }
+.page-header { overflow:hidden; background-color:rgba(0,0,0,0.5); margin:0; padding-left:20px; }
+.tiny-header { font-size:0.6em; position:absolute; margin-top:-16px; padding-left:30px; color:#999;}
+.overlay-preview { height:100%; overflow-y:auto; }
+.overlay-preview ul { margin:0px; padding:0px;  }
+.overlay-preview ul li { list-style:none; }
+.header-center { position:absolute; left:50%; margin-left:-20px;  font-size:2em;}
+.button-open-mainmenu {  background-color:inherit; position:absolute; right:10px; top:10px; }
+
+.header-left {  }
+.header-right { text-align:center;position:absolute; right:0px; width:100%; padding:10px; z-index:4000; background-color:rgba(0,0,0,0.9);  }
+.header-right ul { margin:0; padding:0;}
+.header-right ul li { list-style:none; display:inline-block; }
+.header-right ul li a { padding:10px 70px 10px 70px; font-size:2em; line-height:5em;color:#fff; text-decoration:none; display:block; }
+.header-right .button-close { position:absolute; top:10px; right:10px; }
+#overlay { position:absolute; width:100%; height:100%; background-color:rgba(0,0,0,0.8); z-index:1000; }
+
+.schedule-table { overflow:hidden;}
+.schedule-col, .schedule-day-col { padding-left:0px; width: 14.275%; border-left:1px dotted rgba(255,255,255,0.1); }
+.schedule-header-row  { }
+.schedule-header-row .col-xs-1 { font-weight:bold; text-align:center;}
+.schedule-item { font-size:0.7em; overflow:hidden; position:absolute; width:100%; }
+.schedule-item a.schedule-title { text-decoration:none;color:#fff; display:block; padding:5px 10px 5px 10px; background:rgba(0,0,0,0.3); }
+.schedule-item a.schedule-title:hover { color:#000; background-color:#fff;}
+.schedule-item a.schedule-delete { padding:0 2px 0px 2px; margin:0; z-index:3000; color:#000; position:absolute; right:2px; color:#fff; opacity:0.05; }
+.schedule-item a.schedule-delete:hover { opacity:1;  }
+
+
+.schedule-day-col .add-layer { opacity: 0.5; height:100%; width:100%; position:absolute; overflow:hidden;}
+.schedule-day-col .add-layer a { position:absolute; top:0%; font-size:10em; color:#666; left:50%; margin-left:-60px;}
+a.button-add-schedule,a.button-add-podcast  {  margin-left:20px;color:#fff; opacity:0.5; text-decoration:none;}
+a.button-add-schedule:hover,a.button-add-podcast:hover { opacity:1;}
+.button-add-schedule i,.button-add-podcast i { vertical-align: middle; }
+
+
+.modal-add-schedule { border:10px solid #fff; border-top:none; background-color:#2b3e50; overflow:hidden; position:absolute; left:50%; width:400px; padding:20px; margin-left:-200px; z-index:2000; }
+
+ul.listing-podcast { margin:0px; padding:0px; }
+ul.listing-podcast li { list-style:none; padding:0px;}
+ul.listing-podcast li a { color:#fff; font-size:1.5em; display:block; text-decoration:none; padding: 20px 10px 20px 10px;}
+ul.listing-podcast li a.active { font-weight:bold; opacity:1;}
+ul.listing-podcast li a.new { opacity:0.5;}
+ul.listing-podcast li a:hover { text-decoration:none; opacity:1; background-color:#fff; color:#000;}
+ul.listing-podcast li a i { line-height:0; font-size:0.8; vertical-align:middle; }

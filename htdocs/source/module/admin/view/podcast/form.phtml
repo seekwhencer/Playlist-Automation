@@ -1,0 +1,45 @@
+<? $podcast = $action['podcast']; ?>
+
+<form>
+    <div class="row form-podcast">
+        <div class="col-xs-12">
+            <div class="row">
+                <h3>podcast</h3>
+                <div class="col-xs-12">
+                    <label for="podcastForm[name]">Name</label>
+                    <input class="form-control fat" name="podcastForm[name]" value="<?= $podcast['name']; ?>">
+                </div>
+                <div class="col-xs-12">
+                    <label for="podcastForm[url]">Url</label>
+                    <input class="form-control" name="podcastForm[url]" value="<?= $podcast['url']; ?>">
+                </div>
+                <? if($podcast['name']) : ?>
+                <div class="col-xs-12">
+                    <label for="podcastForm[folder]">Folder</label>
+                    <select class="form-control" name="podcastForm[folder]">
+                        <option value="">...</option>
+                        <? foreach($action['folder']['podcast'] as $folder) : ?>
+                        <option value="<?= $folder; ?>" <? if($folder == $podcast['folder']) :?> selected <? endif ;?>><?= $folder; ?></option>
+                        <? endforeach; ?>
+                    </select>
+                </div>
+                <? else :?>
+                <i class="mt">Folder will be created</i>
+                <? endif; ?>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <input type="hidden" name="podcastForm[file_name]" value="<?= $podcast['file_name']; ?>">
+            <div class="row">
+                <div class="col-xs-12 mt">
+                    <? if($podcast['name']) : ?>
+                    <a href="#" class="btn btn-danger fltr" id="button-delete">delete</a>
+                    <? endif; ?>
+                    <a href="#" class="btn btn-success" id="button-save">save</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

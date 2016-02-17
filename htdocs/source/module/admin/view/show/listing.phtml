@@ -1,0 +1,6 @@
+		<ul class="listing-show">
+			<? if(is_array($action['shows'])) foreach($action['shows'] as $show) : ?>
+			<li><a href="" class="button-show" data-filename="<?= $show['file_name']; ?>"><?= $show['name']; ?></a></li>
+			<? endforeach; ?>
+			<li><a href="" class="button-show new" data-filename=""><i class="fa fa-plus-square-o"> </i> new</a></li>
+		</ul>

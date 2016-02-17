@@ -1,0 +1,1 @@
+/dev/sda2       /external/hdd   vfat    defaults,umask=000      0       0

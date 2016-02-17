@@ -1,0 +1,22 @@
+    <div class="schedule-header-row">
+        <div class="col-xs-1 schedule-col"><h3>Mo</h3></div>
+        <div class="col-xs-1 schedule-col"><h3>Tu</h3></div>
+        <div class="col-xs-1 schedule-col"><h3>We</h3></div>
+        <div class="col-xs-1 schedule-col"><h3>Th</h3></div>
+        <div class="col-xs-1 schedule-col"><h3>Fr</h3></div>
+        <div class="col-xs-1 schedule-col"><h3>Sa</h3></div>
+        <div class="col-xs-1 schedule-col"><h3>Su</h3></div>
+    </div>
+    <div class="schedule-row">
+        <? foreach($action['schedule'] as $day => $s) : ?>
+        <div class="col-xs-1 schedule-day-col">
+        <? foreach($s as $item) : ?>
+            <div class="schedule-item" data-percent="<?= $item['start_percent']; ?>" data-weekday="<?= $day; ?>" data-hour="<?= $item['h']; ?>" data-minute="<?= $item['m']; ?>" data-show="<?= $item['show']; ?>">
+                <a href="" class="btn btn-small schedule-delete"><i class="fa fa-times"></i></a>
+                <a href="" class=" schedule-title"" data-show="<?= $item['show']; ?>" style="border-bottom:2px solid <?= $action['shows'][$item['show']]['color']; ?>;"><strong><?= $item['show']; ?></strong>
+                <span class="time"><?= $item['h'].':'.fillLeadingZero($item['m']); ?></span></a>
+            </div>
+        <? endforeach; ?>
+        </div>
+        <? endforeach; ?>
+    </div>

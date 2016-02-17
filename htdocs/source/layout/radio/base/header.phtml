@@ -1,0 +1,43 @@
+<? 	
+/*
+	global $_p, $_router, $_u, $_c;
+	
+	$headersplit 	= explode(',',PAGE_MAIN_NAVI);
+	$route			= $_router->getRoute();
+	$pageroot		= $_router->getPageRoot();
+	
+?>
+    <? if($_p->content['is_hidden_navigation' ] != true) : ?>
+	<!-- Page Header Start -->
+	<div class="main-nav">
+		<ul class="nav nav-right">
+		    <li>
+                <a id="button-toggle-options" title="Options" data-toggle="tooltip" class="tooltip-mainnavi-pointer" href="" data-original-title="Options"><i class="fa fa-gear"></i></a>
+            </li>
+		    <li><a id="button-toggle-fullscreen" title="Fullscreen" data-toggle="tooltip" class="tooltip-mainnavi-pointer" href="javascript:;" data-original-title="Fullscreen"><i class="fa fa-expand"></i></a></li>
+		</ul>
+		<ul class="nav">
+		    
+<? foreach($headersplit as $item): ?>
+<? if(
+			(
+			
+				(
+						($route[$item]['is_login'] === true && $_u->is_login===true)
+					|| 	($route[$item]['is_login'] === false && $_u->is_login===false)
+					
+				)
+					|| 	( $route[$item]['is_login'] === 'both' )
+			)
+				&& $route[$item]['navi'] == 'header'
+				&& ($_u->getLevel() >= $route[$item]['level'] || empty($route[$item]['level']))
+	)  : ?>
+		<li<? if($item == $_p->page_root['slug']): ?> class="active"<? endif;?>><a href="<?= PAGE_BASE; ?><?= $item; ?>" class="tooltip-mainnavi-pointer" data-toggle="tooltip" title="<?= $route[$item]['label']; ?>"><i class="fa fa-<?= $route[$item]['navi_icon']; ?>"></i></a></li>
+<? endif; ?>
+<? endforeach; ?>
+</ul>
+</div>
+	<!-- Page Header End -->
+	<? endif; ?>
+
+*/?>

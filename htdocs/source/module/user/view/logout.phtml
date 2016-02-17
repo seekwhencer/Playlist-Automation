@@ -1,0 +1,30 @@
+<?
+$message=$action['message'];
+global $_u,$_p;
+?>
+<div class="">
+    <div class="row-fluid">
+        <? if(!empty($message)) : ?>
+        <ul class="action-message deny">
+            <li class="" style=""><?= $message; ?></li>
+        </ul>
+        <?  endif; ?>
+        
+        <div class="well">
+            <form action="<?= PAGE_BASE; ?>login" method="POST">
+                <div class="row oh">
+                    <div class="well">
+                        <h3><strong>ORB</strong> relay logout</h3>
+                    </div>
+                </div>
+                <div class="row oh">
+                    <div class="col-md-12">
+                        <a href="<?= PAGE_BASE; ?>logout" type="submit" class="btn btn-warning btn-large col-xs-12">Logout</a>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+        <div class="span4"></div>
+    </div>
+</div>
