@@ -1,7 +1,10 @@
 <?php
 	/* 
-	   Abrisud 2015
-	
+	   Playlist Automation
+	   
+       Matthias Kallenbach
+       Berlin, 2016
+      
 	*/
 
 	header('Content-type: text/html; charset=UTF-8');
