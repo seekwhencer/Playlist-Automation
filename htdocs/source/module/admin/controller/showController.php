@@ -52,7 +52,7 @@ class showController {
         $params['timestamp'] = "".time();
         
         if($params['file_name']!=''){
-            $oldFilePath = $this -> Radio -> Config -> get('path_show').$params['file_name'].'.json';
+            $oldFilePath = $this -> Radio -> Config -> get('path_data_show').$params['file_name'].'.json';
             if(file_exists($oldFilePath))
                 unlink($oldFilePath);
         }
@@ -60,7 +60,7 @@ class showController {
         $params['slug'] = $_c->convertToSlug($params['name']);
         
         $newFileName = md5(time());
-        $fh = fopen( $this -> Radio -> Config -> get('path_show').$newFileName.'.json','w+');
+        $fh = fopen( $this -> Radio -> Config -> get('path_data_show').$newFileName.'.json','w+');
         fwrite($fh, json_encode($params)); 
     }
     
@@ -71,7 +71,7 @@ class showController {
     public function deleteAction(){
         $params = getParams();
         $show = $params['show'];
-        $oldPath = $this -> Radio -> Config -> get('path_show').$show.'.json';
+        $oldPath = $this -> Radio -> Config -> get('path_data_show').$show.'.json';
         if(file_exists($oldPath))
             unlink($oldPath);
     }
@@ -79,8 +79,8 @@ class showController {
     public function duplicateAction(){
         $params = getParams();
         $show = $params['show'];
-        $oldPath = $this -> Radio -> Config -> get('path_show').$show.'.json';
-        $newPath = $this -> Radio -> Config -> get('path_show').md5(time()).'.json';
+        $oldPath = $this -> Radio -> Config -> get('path_data_show').$show.'.json';
+        $newPath = $this -> Radio -> Config -> get('path_data_show').md5(time()).'.json';
         
         if(file_exists($oldPath))
             copy($oldPath, $newPath);

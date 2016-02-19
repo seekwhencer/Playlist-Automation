@@ -63,6 +63,8 @@ var Show = {
             e.preventDefault();
             Show.previewShow();
         });
+        
+         $('[data-toggle="tooltip"]').tooltip();
     },
 
     //

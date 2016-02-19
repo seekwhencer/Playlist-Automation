@@ -137,19 +137,8 @@ class Radio {
         $dir = $this -> Config -> get('path_music').$show['folder'];
 
         // get the song files
-        $files = $this -> searchFiles($dir, false);
-
-        // get the podcast files
-        /*if ($show['podcast']) {
-            include_once ('source/assets/ClassPodcast.php');
-            $pc = new Podcast();
-            $podcast = $pc -> getFeed($show['podcast']['slug']);
-
-            if ($podcast['folder'])
-                $podcast_files = array_values($this -> searchFiles($podcast['folder']));
-        }*/
-        
-        
+        $files = $this -> searchFiles($dir, false, $show['recursive']);
+ 
         if (file_exists($this -> Config -> get('path_podcast').$show['podcast']['folder'])) {
             $podcast_files = array_values($this -> searchFiles($this -> Config -> get('path_podcast') . $show['podcast']['folder']));
             $count_podcast_files = count($podcast_files);
@@ -178,29 +167,21 @@ class Radio {
         }
 
         // get hot rotation
-        if ($show['hot_rotation']['song_num'] > 0) {
-
-            $i = 0;
-            $hot_rotation = array();
-            foreach ($playlist as $p) {
-                if ($i == $show['hot_rotation']['song_num'])
-                    break;
-
-                $hot_rotation[] = $p;
-                $i++;
-            }
-
-            // shuffle beginning hot rotation
-            if ($show['hot_rotation']['shuffle_beginning'] == 1)
-                shuffle($hot_rotation);
+        if ($show['hot_rotation']['song_num'] > 0 && $show['hot_rotation']['enable'] == '1') {
+            $hot_rotation = $this->getHotRotation($show, $playlist);    
 
             // multiply the hot rotation
             $hot_multi = array();
-            for ($i = 0; $i < $show['hot_rotation']['insert_multiplier']; $i++)
+            for ($i = 0; $i < intval($show['hot_rotation']['insert_multiplier']); $i++)
                 $hot_multi = array_merge($hot_rotation, $hot_multi);
 
             // merge muliplied hot rotation with sorted playlist
-            $playlist = array_merge($playlist, $hot_multi);
+            if($show['hot_rotation']['only']=='1'){
+                $playlist = $hot_multi;
+            } else {
+                $playlist = array_merge($playlist, $hot_multi);
+            }
+            
 
         }
 
@@ -234,9 +215,13 @@ class Radio {
         // playlist with podcasts
         // if ($podcast != false) {
             
-        if ($show['podcast']['folder']){    
+        if ($show['podcast']['folder'] && count($podcast_files) > 0){    
             $index = 0;
             $pnum = 0;
+            
+            // set the max random count
+            if(count($podcast_files) < $show['podcast']['cast_num'])
+                $show['podcast']['cast_num'] = count($podcast_files)-1;
 
             // add random podcast on top
             if ($show['podcast']['random_first'] == 1) {
@@ -326,6 +311,24 @@ class Radio {
         $this -> writeNowPlayingShow($show);
         
         return $playlist;
+    }
+
+    public function getHotRotation($show, $playlist){
+        $hot_rotation = array();
+        $i=0;
+        foreach ($playlist as $p) {
+            if ($i == $show['hot_rotation']['song_num'])
+                break;
+
+            $hot_rotation[] = $p;
+            $i++;
+        }
+
+        // shuffle beginning hot rotation
+        if ($show['hot_rotation']['shuffle_beginning'] == 1)
+            shuffle($hot_rotation);
+           
+        return $hot_rotation;
     }
 
     public function searchFiles($dir, $search = false, $recursive = false) {
