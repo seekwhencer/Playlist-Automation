@@ -1,0 +1,241 @@
+<? $show = $action['show']; ?>
+    <div class="row form-show">
+        <form>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="row">
+                <h3>Show</h3>
+                <div class="col-xs-12"  data-toggle="tooltip" title="Name of the Show."  data-placement="bottom">
+                    <label for="showForm[name]">Name</label>
+                    <input class="form-control fat" name="showForm[name]" value="<?= $show['name']; ?>">
+                </div>
+                <? /*<div class="col-xs-12">
+                    <label for="showForm[station]">Station</label>
+                    <select class="form-control" name="showForm[station]">
+                        <option value="">...</option>
+                        <? foreach($action['stations'] as $station) : ?>
+                        <option value="<?= $station['slug']; ?>" <? if($station['slug'] == $show['station']) :?> selected <? endif ;?>><?= $station['name']; ?></option>
+                        <? endforeach; ?>
+                    </select>
+                </div>*/?>
+                <div class="col-xs-8"  data-toggle="tooltip" title="File Folder where the MP3s are stored"  data-placement="bottom">
+                    <label for="showForm[folder]">Folder</label>
+                    <select class="form-control" name="showForm[folder]">
+                        <option value="">...</option>
+                        <? foreach($action['folder']['music'] as $folder) : ?>
+                        <option value="<?= $folder; ?>" <? if($folder == $show['folder']) :?> selected <? endif ;?>><?= $folder; ?></option>
+                        <? endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-xs-4"data-toggle="tooltip" title="Fetch Subfolders"  data-placement="bottom">
+                    <label for="showForm[recursive]" >Recursive</label>
+                    <select class="form-control" name="showForm[recursive]">
+                        <option value="">...</option>
+                        <option value="1" <? if("1" == $show['recursive']) :?> selected <? endif ;?>>Yes</option>
+                        <option value="0" <? if("0" == $show['recursive']) :?> selected <? endif ;?>>No</option>
+                    </select>
+                </div>
+                <div class="col-xs-12">
+                    <label for="showForm[name]">Description</label>
+                    <textarea class="form-control" name="showForm[description]" value="<?= $show['description']; ?>"></textarea>
+                </div>
+                <div class="col-xs-6" data-toggle="tooltip" title="Format: #000000"  data-placement="bottom">
+                    <label for="showForm[color]">Color</label>
+                    <input class="form-control" name="showForm[color]" value="<?= $show['color']; ?>">
+                </div>
+                <div class="col-xs-6" data-toggle="tooltip" title="Suppress shuffle"  data-placement="bottom" >
+                    <label for="showForm[no_shuffle]">No Shuffle</label>
+                    <select class="form-control" name="showForm[no_shuffle]">
+                        <option value="">...</option>
+                        <option value="1" <? if("1" == $show['no_shuffle']) :?> selected <? endif ;?>>Yes</option>
+                        <option value="0" <? if("0" == $show['no_shuffle']) :?> selected <? endif ;?>>No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="row">
+                <h3>Hot Rotation</h3>
+                 <div class="col-xs-6" data-toggle="tooltip" title="Turn it on or off. "  data-placement="bottom" >
+                    <label for="showForm[hot_rotation][enable]">Enable</label>
+                    <select class="form-control" name="showForm[hot_rotation][enable]">
+                        <option value="">...</option>
+                        <option value="1" <? if("1" == $show['hot_rotation']['enable']) :?> selected <? endif ;?>>Yes</option>
+                        <option value="0" <? if("0" == $show['hot_rotation']['enable']) :?> selected <? endif ;?>>No</option>
+                    </select>
+                </div>
+                <div class="col-xs-6" data-toggle="tooltip" title="Play only Hot Rotation Files"  data-placement="bottom" >
+                    <label for="showForm[hot_rotation][only]">Only</label>
+                    <select class="form-control" name="showForm[hot_rotation][only]">
+                        <option value="">...</option>
+                        <option value="1" <? if("1" == $show['hot_rotation']['only']) :?> selected <? endif ;?>>Yes</option>
+                        <option value="0" <? if("0" == $show['hot_rotation']['only']) :?> selected <? endif ;?>>No</option>
+                    </select>
+                </div>
+                <div class="col-xs-6" data-toggle="tooltip" title="Count of latest Tracks. 0 or empty disable it."  data-placement="bottom" >
+                    <label for="showForm[hot_rotation][song_num]">Latest Tracks</label>
+                    <input class="form-control tac" name="showForm[hot_rotation][song_num]" value="<?= $show['hot_rotation']['song_num']; ?>">
+                </div>
+                 <div class="col-xs-6" data-toggle="tooltip" title="Place all fetched Files on top of the Playlist."  data-placement="bottom" >
+                    <label for="showForm[hot_rotation][at_beginning]" >At Beginning</label>
+                    <select class="form-control" name="showForm[hot_rotation][at_beginning]">
+                        <option value="">...</option>
+                        <option value="1" <? if("1" == $show['hot_rotation']['at_beginning']) :?> selected <? endif ;?>>Yes</option>
+                        <option value="0" <? if("0" == $show['hot_rotation']['at_beginning']) :?> selected <? endif ;?>>No</option>
+                    </select>
+                </div>
+                <div class="col-xs-6"data-toggle="tooltip" title="Play the Beginning Block randomly."  data-placement="bottom" >
+                    <label for="showForm[hot_rotation][shuffle_beginning]">Shuffle Beginning</label>
+                    <select class="form-control" name="showForm[hot_rotation][shuffle_beginning]">
+                        <option value="">...</option>
+                        <option value="1" <? if("1" == $show['hot_rotation']['shuffle_beginning']) :?> selected <? endif ;?>>Yes</option>
+                        <option value="0" <? if("0" == $show['hot_rotation']['shuffle_beginning']) :?> selected <? endif ;?>>No</option>
+                    </select>
+                </div>
+                
+                <div class="col-xs-6" data-toggle="tooltip" title="Only Files under this Age in Days."  data-placement="bottom" >
+                    <label for="showForm[hot_rotation][song_age_days]">Song Age Days</label>
+                    <input class="form-control tac" name="showForm[hot_rotation][song_age_days]" value="<?= $show['hot_rotation']['song_age_days']; ?>">
+                </div>
+                <div class="col-xs-6"data-toggle="tooltip" title="How often is this Block in the Playlist?"  data-placement="bottom" >
+                    <label for="showForm[hot_rotation][insert_multiplier]">Insert Multiplier</label>
+                    <input class="form-control tac" name="showForm[hot_rotation][insert_multiplier]" value="<?= $show['hot_rotation']['insert_multiplier']; ?>">
+                </div>
+                <div class="col-xs-12">
+                &nbsp;
+                </div>     
+                <div class="col-xs-12">
+                    <? if($show['name']) : ?>
+                    <a href="#" class="btn btn-primary" id="button-hot-rotation">show only hot rotation</a>
+                    <? endif; ?>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">   
+            <div class="row">
+                <h3>Podcast</h3>
+                <div class="col-xs-12"data-toggle="tooltip" title="Folder on your Disk."  data-placement="bottom">
+                    <label for="showForm[podcast][folder]">Folder</label>
+                    <select class="form-control" name="showForm[podcast][folder]">
+                        <option>...</option>
+                        <? foreach($action['folder']['podcast'] as $folder) : ?>
+                        <option value="<?= $folder; ?>" <? if($folder == $show['podcast']['folder']) :?> selected <? endif ;?>><?= $folder; ?></option>
+                        <? endforeach; ?>
+                    </select>
+                 </div>   
+                <div class="col-xs-6"data-toggle="tooltip" title="Place a Podcast every X Tracks, after adding Hot Rotation"  data-placement="bottom">
+                    <label for="showForm[podcast][every_nth_song]">Every nth Song</label>
+                    <input class="form-control tac" name="showForm[podcast][every_nth_song]" value="<?= $show['podcast']['every_nth_song']; ?>">
+                </div>
+                <div class="col-xs-6"data-toggle="tooltip" title="Playlist Number of the first Podcast."  data-placement="bottom">
+                    <label for="showForm[podcast][offset]">Offset</label>
+                    <input class="form-control tac" name="showForm[podcast][offset]" value="<?= $show['podcast']['offset']; ?>">
+                </div>
+                <div class="col-xs-6"data-toggle="tooltip" title="Count of latest Tracks. 0 or empty disable it."  data-placement="bottom">
+                    <label for="showForm[podcast][cast_num]">Latest Tracks</label>
+                    <input class="form-control tac" name="showForm[podcast][cast_num]" value="<?= $show['podcast']['cast_num']; ?>">
+                </div>
+                <div class="col-xs-6"data-toggle="tooltip" title="Play randomly the first Track. Then play it chronological."  data-placement="bottom">
+                    <label for="showForm[podcast][random_first]">Random First</label>
+                    <select class="form-control" name="showForm[podcast][random_first]">
+                        <option value="">...</option>
+                        <option value="1" <? if("1" == $show['podcast']['random_first']) :?> selected <? endif ;?>>Yes</option>
+                        <option value="0" <? if("0" == $show['podcast']['random_first']) :?> selected <? endif ;?>>No</option>
+                    </select> 
+                </div>            
+            </div>
+        
+            <input type="hidden" name="showForm[file_name]" value="<?= $show['file_name']; ?>">
+       </div>
+       
+       <div class="col-lg-2 col-md-6">
+            <div class="row">
+                <h3>Spots</h3>
+                 <div class="col-xs-12" data-toggle="tooltip" title="File Folder where the MP3s are stored"  data-placement="bottom">
+                    <label for="showForm[spot][folder]">Folder</label>
+                    <select class="form-control" name="showForm[spot][folder]">
+                        <option>...</option>
+                        <? foreach($action['folder']['spot'] as $folder) : ?>
+                        <option value="<?= $folder; ?>" <? if($folder == $show['spot']['folder']) :?> selected <? endif ;?>><?= $folder; ?></option>
+                        <? endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-xs-6" data-toggle="tooltip" title="Place a Spot every X Tracks, after adding Hot Rotation and Podcast."  data-placement="bottom">
+                    <label for="showForm[spot][every_nth_song]">Every nth Song</label>
+                    <input class="form-control tac" name="showForm[spot][every_nth_song]" value="<?= $show['spot']['every_nth_song']; ?>">
+                </div>
+                <div class="col-xs-6" data-toggle="tooltip" title="Playlist Number of the first Spot"  data-placement="bottom">
+                    <label for="showForm[spot][offset]">Offset</label>
+                    <input class="form-control tac" name="showForm[spot][offset]" value="<?= $show['spot']['offset']; ?>">
+                </div>
+                <div class="col-xs-6" data-toggle="tooltip" title="Playing the first Spot randomly. The others by Order and Order By."  data-placement="bottom">
+                    <label for="showForm[spot][shuffle_beginning]">Shuffle Beginning</label>
+                    <select class="form-control" name="showForm[spot][shuffle_beginning]">
+                        <option value="">...</option>
+                        <option value="1" <? if("1" == $show['spot']['shuffle_beginning']) :?> selected <? endif ;?>>Yes</option>
+                        <option value="0" <? if("0" == $show['spot']['shuffle_beginning']) :?> selected <? endif ;?>>No</option>
+                    </select>
+                </div>
+                <div class="col-xs-6" data-toggle="tooltip" title="Order"  data-placement="bottom">
+                    <label for="showForm[spot][order]">Order</label>
+                    <select class="form-control" name="showForm[spot][order]">
+                        <option value="">...</option>
+                        <option value="shuffle" <? if('shuffle' == $show['spot']['order']) :?> selected <? endif ;?>>Shuffle</option>
+                        <option value="time" <? if('time' == $show['spot']['order']) :?> selected <? endif ;?>>Linear</option>
+                    </select>
+                </div>
+                <div class="col-xs-6" data-toggle="tooltip" title="Order by"  data-placement="bottom">
+                    <label for="showForm[spot][order_by]">Order by</label>
+                    <select class="form-control" name="showForm[spot][order_by]">
+                        <option value="">...</option>
+                        <option value="time" <? if('time' == $show['spot']['order_by']) :?> selected <? endif ;?>>Time</option>
+                        <option value="alpha" <? if('alpha' == $show['spot']['order_by']) :?> selected <? endif ;?>>Alphabet</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+       
+       <div class="col-lg-2 col-md-3">  
+            <div class="row">
+                <h3>Intro</h3>
+                <div class="col-xs-12"data-toggle="tooltip" title="File Folder where the MP3s are stored"  data-placement="bottom">
+                    <label for="showForm[intro][folder]">Folder</label>
+                    <select class="form-control" name="showForm[intro][folder]">
+                        <option>...</option>
+                        <? foreach($action['folder']['intro'] as $folder) : ?>
+                        <option value="<?= $folder; ?>" <? if($folder == $show['intro']['folder']) :?> selected <? endif ;?>><?= $folder; ?></option>
+                        <? endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-xs-12"data-toggle="tooltip" title="Do it randomly."  data-placement="bottom">
+                    <label for="showForm[intro][random]">Random</label>
+                    <select class="form-control" name="showForm[intro][random]">
+                        <option>...</option>
+                        <option value="1" <? if("1" == $show['intro']['random']) :?> selected <? endif ;?>>Yes</option>
+                        <option value="0" <? if("0" == $show['intro']['random']) :?> selected <? endif ;?>>No, alphabetical</option>
+                    </select>
+                </div>
+            </div>
+         </div>
+       <div class="col-xs-12"> 
+       &nbsp;
+       </div>
+       <div class="col-xs-12"> 
+            <div class="row">
+                <div class="col-xs-12 mt">
+                    <? if($show['name']) : ?>
+                    <a href="#" class="btn btn-danger fltr" id="button-delete">delete</a>
+                    <? endif; ?>
+                    <a href="#" class="btn btn-success" id="button-save">save</a>
+                    <? if($show['name']) : ?>
+                    <a href="#" class="btn btn-warning" id="button-duplicate">duplicate</a>
+                    <a href="#" class="btn btn-primary" id="button-preview">preview</a>
+                    <? endif; ?>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </form>

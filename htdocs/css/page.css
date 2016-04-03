@@ -1,9 +1,9 @@
-
-.fat { font-weight:bold;}
-.fltr { float:right;}
-
-.mt { margin-top:5px; }
-.mb { margin-bottom:5px; }
-
-.tac { text-align:center; }
-.row { margin-right:-2px;}
+.box {
+  color: #fe33ac;
+  border-color: #fdcdea;
+}
+.box div {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}

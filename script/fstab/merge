@@ -3,4 +3,9 @@ proc            /proc           proc    defaults          0       0
 /dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
 # a swapfile is not a swap partition, so no using swapon|off from here on, use  dphys-swapfile swap[on|off]  for that
 
+#/dev/sda1 	/external/sd 	vfat 	defaults,umask=000  	0	0
+#/dev/sda2	/external/hdd	vfat	defaults,umask=000	0	0
+
+
+
 /dev/sda2       /external/hdd   vfat    defaults,umask=000      0       0

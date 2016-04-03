@@ -1,0 +1,84 @@
+<?
+global $_p, $_c;
+ ?>
+<div id="overlay" style="display:none;"></div>
+<a href="" class="btn btn-primary button-open-mainmenu" id="open-main-menu"><i class="fa fa-bars"></i></a>
+<div id="main-navigation" class="header-right" style="display:none;">
+    <?= $_c -> partial('header-main-navigation', $action); ?>
+</div>
+<div class="page-header">
+    <div class="header-left">
+        <h2><?= PAGE_NAME; ?> <?= PAGE_CLAIM; ?> - <?= $_p -> content['label']; ?> <a href="" class="button-add-schedule"><i class="fa fa fa-plus-square-o"></i> new</a></h2>
+    </div>   
+</div>
+<div class="modal-add-schedule" id="modal-add-schedule" style="display:none;">
+    <h3>Add Schedule</h3>
+    <form>
+        <div class="col-xs-12">
+            <label for="scheduleForm[show]">Show</label>
+            <select class="form-control" name="scheduleForm[show]">
+                <option value="">...</option>
+                <? foreach($action['shows'] as $show) : ?>
+                <option value="<?= $show['slug']; ?>"><?= $show['name']; ?></option>
+                <? endforeach; ?>
+            </select>
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-3">
+                    <label for="scheduleForm[show]">Week Day</label>
+                </div>
+                <div class="col-xs-1">
+                    <label for="scheduleForm[weekday][1]">Mo</label>
+                    <input type="checkbox" name="scheduleForm[weekday][1]" value="1">
+                </div>
+                <div class="col-xs-1">
+                    <label for="scheduleForm[weekday][2]">Tu</label>
+                    <input type="checkbox" name="scheduleForm[weekday][2]" value="1">
+                </div>
+                <div class="col-xs-1">
+                    <label for="scheduleForm[weekday][3]">We</label>
+                    <input type="checkbox" name="scheduleForm[weekday][3]" value="1">
+                </div>
+                <div class="col-xs-1">
+                    <label for="scheduleForm[weekday][4]">Th</label>
+                    <input type="checkbox" name="scheduleForm[weekday][4]" value="1">
+                </div>
+                <div class="col-xs-1">
+                    <label for="scheduleForm[weekday][5]">Fr</label>
+                    <input type="checkbox" name="scheduleForm[weekday][5]" value="1">
+                </div>
+                <div class="col-xs-1">
+                    <label for="scheduleForm[weekday][6]">Sa</label>
+                    <input type="checkbox" name="scheduleForm[weekday][6]" value="1">
+                </div>
+                <div class="col-xs-1">
+                    <label for="scheduleForm[weekday][7]">Su</label>
+                    <input type="checkbox" name="scheduleForm[weekday][7]" value="1">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-xs-6">
+                <label for="scheduleForm[hour]">Hour</label>
+                <input type="text" class="form-control tac" name="scheduleForm[hour]" value="">
+            </div>
+            <div class="col-xs-6">
+                <label for="scheduleForm[minute]">Minute</label>
+                <input type="text" class="form-control tac" name="scheduleForm[minute]" value="00">
+            </div>
+        </div>
+        <div class="col-xs-12"> 
+            <div class="row mt">
+                <div class="col-xs-12 mt">
+                    <a href="#" class="btn btn-success" id="button-save-schedule">save</a>
+                    <a href="#" class="btn btn-danger" id="button-abort-schedule">abort</a>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+</div>
+<div class="col-xs-12 schedule-table" id="ScheduleTable">
+    <?= $_c->partial('schedule/table',$action); ?>
+</div>

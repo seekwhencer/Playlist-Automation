@@ -1,0 +1,5 @@
+		<ul class="listing-podcast">
+			<? if(is_array($action['feeds'])) foreach($action['feeds'] as $podcast) : ?>
+			<li><a href="" class="button-podcast" data-filename="<?= $podcast['file_name']; ?>"><?= $podcast['name']; ?></a></li>
+			<? endforeach; ?>
+		</ul>

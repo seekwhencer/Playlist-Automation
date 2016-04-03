@@ -1,0 +1,13 @@
+<?
+global $_p, $_c;
+ ?>
+<div id="overlay" style="display:none";></div>
+<a href="" class="btn btn-primary button-open-mainmenu" id="open-main-menu"><i class="fa fa-bars"></i></a>
+<div id="main-navigation" class="header-right" style="display:none;">
+    <?= $_c -> partial('header-main-navigation', $action); ?>
+</div>
+<div class="page-header">
+    <div class="header-left">
+        <h2><?= PAGE_NAME; ?> <?= PAGE_CLAIM; ?> - <?= $_p -> content['label']; ?></h2>
+    </div>
+ </div>
