@@ -1,9 +1,16 @@
-.box {
-  color: #fe33ac;
-  border-color: #fdcdea;
+.schedule-item {
+  overflow: hidden;
+  float: left;
 }
-.box div {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+.schedule-item .inner {
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.schedule-item .inner .schedule-title {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  text-align: center;
 }

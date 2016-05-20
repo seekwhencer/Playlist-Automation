@@ -25,6 +25,18 @@ class scheduleController {
         );
     }
     
+    public function silentAction() {
+        
+        global $_p;
+        
+        return array(
+            'schedule' => $this -> Radio -> Schedule,
+            'stations' => $this->Radio -> Station,
+            'shows' => kfillBy($this->Radio -> Show, 'slug'),
+            
+        );
+    }
+    
     public function saveAction(){
         $params = getParams();
         $this -> Radio -> saveSchedule($params['scheduleForm']);
