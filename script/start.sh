@@ -13,8 +13,4 @@ sleep 2
 sudo cp /data/radio/script/fstab/backup /etc/fstab
 echo ""
 
-echo ""
-sudo /etc/init.d/samba restart
-echo ""
-
 sudo sh /data/radio/script/start_mpd.sh &
