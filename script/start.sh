@@ -13,27 +13,8 @@ sleep 2
 sudo cp /data/radio/script/fstab/backup /etc/fstab
 echo ""
 
-sudo /etc/init.d/mpd start
-sudo /etc/init.d/samba start
-
-echo "Updating Audio Files"
-echo "this can take a while ..."
+echo ""
+sudo /etc/init.d/samba restart
 echo ""
 
-sudo mpc update --wait
-echo ""
-sudo mpc load playlist_latest
-sudo mpc crossfade 8
-echo ""
-sudo mpc play
-
-
-echo ""
-echo ""
-echo ""
-echo ""
-echo "Radio Startup complete..."
-echo ""
-echo "Connect to this http:// IP :8080/live"
-
-
+sudo sh /data/radio/script/start_mpd.sh &

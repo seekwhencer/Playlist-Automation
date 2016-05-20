@@ -109,6 +109,9 @@ class Radio {
         $files = array();
 
         $folders = array();
+        $objects = array();
+        if(file_exists($path))
+        
         if (!$recursive) {
             $objects = new DirectoryIterator($path);
         } else {

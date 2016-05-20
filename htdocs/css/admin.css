@@ -252,7 +252,7 @@ ul.listing-podcast li a.active {
     opacity: 1;
 }
 ul.listing-podcast li a.new {
-    opacity: 0.5;
+    opacity: 0.5px;
 }
 ul.listing-podcast li a:hover {
     text-decoration: none;
@@ -265,4 +265,5 @@ ul.listing-podcast li a i {
     font-size: 0.8;
     vertical-align: middle;
 }
+
 

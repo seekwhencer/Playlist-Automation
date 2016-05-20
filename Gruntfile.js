@@ -31,9 +31,13 @@ module.exports = function(grunt) {
         csslint : {
             lax : {
                 options : {
-                    import : 2
+                    import : false,
+                    quiet: false
                 },
-                src : ['src/**/*.css']
+                src : [
+                    'src/**/*.css',
+                    '!src/css/radio.bootstrap.css'
+                ]
             }
         },
 
@@ -85,8 +89,8 @@ module.exports = function(grunt) {
         watch : {
 
             scripts : {
-                files : ['<%= jshint.files %>'],
-                tasks : ['jshint','sync:build'],
+                files : ['src/**'],
+                tasks : ['jshint','sync'],
                 options : {
                     spawn : false,
                 }
@@ -94,7 +98,7 @@ module.exports = function(grunt) {
 
             less : {
                 files : ['src/css/**/*.less'],
-                tasks : ['less','sync:build'],
+                tasks : ['less','sync'],
                 options : {
                     spawn : false,
                 }
@@ -102,7 +106,7 @@ module.exports = function(grunt) {
 
             css : {
                 files : ['src/css/**/*.css', '!src/css/radio.bootstrap.css'],
-                tasks : ['csslint','sync:build'],
+                tasks : ['csslint','sync'],
                 options : {
                     spawn : false,
                 }
@@ -169,6 +173,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-sync');
 
     grunt.registerTask('default', ['jshint', 'watch', 'bowercopy', 'less', 'csslint', 'sync']);
+    //grunt.registerTask('default', ['jshint', 'watch', 'bowercopy', 'less', 'csslint', 'sync']);
     
     
     /**
@@ -176,7 +181,7 @@ module.exports = function(grunt) {
      * 
      * call "grunt export"
      * 
-     * before download all dependencies
+     * before downloading all dependencies
      * create the less css files
      * and sync the source with the "build" folder
      * after that, sync the "build" folder with the "htdocs" folder
