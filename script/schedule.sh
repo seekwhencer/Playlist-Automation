@@ -1,4 +1,4 @@
-wget -qO- http://127.0.0.1/radio/admin/schedule/cron &> /dev/null
+wget -qO- http://$1/radio/admin/schedule/cron &> /dev/null
 sleep 2
 if [ -f /data/radio/htdocs/data/playlist/playlist.m3u ]
 then
