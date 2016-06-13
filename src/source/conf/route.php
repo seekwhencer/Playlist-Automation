@@ -16,6 +16,26 @@ $this->route = array(
         								
     ),
     
+    'heartbeat' => array(
+        'label'         => 'Heartbeat',
+        'module'        => 'main',
+        'controller'    => 'main',
+        'action'        => 'heartbeat',
+        'view'          => 'heartbeat',
+        'is_login'      => 'both',
+        'is_xhr'        => true
+    ),
+    
+    'nextsong' => array(
+        'label'         => 'nextsong',
+        'module'        => 'main',
+        'controller'    => 'main',
+        'action'        => 'nextsong',
+        'view'          => 'nextsong',
+        'is_login'      => 'both',
+        'is_xhr'        => true
+    ),
+    
 	'login' => array(
 		'label'			=> 'Login',
 		'module' 		=> 'user',
@@ -32,7 +52,8 @@ $this->route = array(
 		'view'			=> 'logout',
 		'is_login'		=> true,
 	),
-	
+
+    
     /**
      *  Admin
      * 
@@ -247,6 +268,17 @@ $this->route = array(
         'action'        => 'index',
         'view'          => 'index/config',
         'is_login'      => true
+    ),
+    
+        
+    'admin/thread' => array(
+        'label'         =>'Websocket Server Thread',
+        'module'        =>'admin',
+        'controller'    =>'admin',
+        'action'        =>'thread',
+        'view'          => 'index/thread',
+        'is_login'      =>'both',
+        'is_xhr'        => true
     ),
     
     /**

@@ -12,13 +12,20 @@ class Radio {
     public $Suffix = array('.mp3');
     public $Excludes = array('Thumbs.db', '.', '..');
 
-    public function __construct() {
+    public function __construct($options = false) {
         include_once('source/lib/Config.php');
         $this -> Config = new Config();
         
-        $this -> getStations();
-        $this -> getShows();
-        $this -> getSchedule();
+        if($options===false){
+            $this -> getStations();
+            $this -> getShows();
+            $this -> getSchedule();
+            return;
+        }
+        
+        if($options['silent']===true){
+            return;
+        }
     }
 
 
@@ -431,6 +438,33 @@ class Radio {
         $fh = fopen($pathFile,'w+');
         fwrite($fh, $show['slug']);
         fclose($fh);
+    }
+    
+    public function getNowPlaylingShow(){
+        $pathFile = $this -> Config -> get('path_data_playlist').$this -> Config -> get('now_playing_show');
+        if(file_exists($pathFile)){
+            $showName = implode(file($pathFile));
+            return $showName;
+        } else {
+            return false;
+        }
+    }
+    
+    public function getNowPlayingSong(){
+        $pathFile = $this -> Config -> get('path_data_playlist').$this -> Config -> get('now_playing_song');
+        if(file_exists($pathFile)){
+            $s = implode(file($pathFile));
+            $split = explode('[playing]',$s);
+            $splitRight = explode('(',$split[1]);
+            $split2Right = explode(')',$splitRight[1]);
+            
+            $seek = str_replace('%', '', $split2Right[0]);
+            
+            $songName = str_replace("\n", "", $split[0]);
+            return array ('song' => $songName, 'seek' => $seek);
+        } else {
+            return false;
+        }
     }
 
     public function deleteSchedule($data){

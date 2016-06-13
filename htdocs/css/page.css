@@ -1,16 +1,44 @@
-.schedule-item {
+.home .show-row .show-title {
+  font-size: 7em;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+.home .title-row {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.home .title-row .song-title {
+  font-size: 3em;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+.home .schedule-row {
+  margin-bottom: 70px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.home .schedule-row .schedule-item {
   overflow: hidden;
   float: left;
 }
-.schedule-item .inner {
+.home .schedule-row .schedule-item .inner {
   height: 200px;
   width: 100%;
   overflow: hidden;
   position: relative;
 }
-.schedule-item .inner .schedule-title {
+.home .schedule-row .schedule-item .inner .schedule-title {
   position: absolute;
-  bottom: 5px;
-  width: 100%;
+  transform: rotate(90deg);
+  width: 200px;
+  left: -85px;
+  top: 95px;
+}
+.home .next-button-row {
+  margin-top: 20px;
   text-align: center;
+}
+.home .schedule-marker {
+  position: absolute;
+  margin-top: -70px;
 }

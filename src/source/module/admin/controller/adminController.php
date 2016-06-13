@@ -28,6 +28,20 @@ class adminController {
 		);
 	}
     
+        
+    public function threadAction(){
+        include_once('source/lib/WSServer.php');
+        
+        $options = array(
+            'host' => 'localhost',
+            'port' => 1414 
+        );
+        
+        $WSServer = new WSServer($options);
+        
+        echo 'THREAD';
+        
+    }
 
 }
 ?>

@@ -1,1 +1,18 @@
-{"max_files_per_playlist":"1000","max_playlist_entries":"1000","now_playing_show":"now_playing_show.txt","path_data_playlist":"data\/playlist\/","path_data_podcast":"data\/podcast\/","path_data_schedule":"data\/schedule\/","path_data_show":"data\/show\/","path_data_station":"data\/station\/","path_intro":"\/external\/hdd\/radio\/intro\/","path_music":"\/external\/hdd\/radio\/music\/","path_podcast":"\/external\/hdd\/radio\/podcast\/","path_spot":"\/external\/hdd\/radio\/spot\/","playlist_name":"playlist.m3u","schedule_week":"week.json","station_name":"raumstation"}
+{
+    "max_files_per_playlist": "1000",
+    "max_playlist_entries": "1000",
+    "now_playing_show": "now_playing_show.txt",
+    "now_playing_song": "now_playing_song.txt",
+    "path_data_playlist": "data\/playlist\/",
+    "path_data_podcast": "data\/podcast\/",
+    "path_data_schedule": "data\/schedule\/",
+    "path_data_show": "data\/show\/",
+    "path_data_station": "data\/station\/",
+    "path_intro": "\/external\/hdd\/radio\/intro\/",
+    "path_music": "\/external\/hdd\/radio\/music\/",
+    "path_podcast": "\/external\/hdd\/radio\/podcast\/",
+    "path_spot": "\/external\/hdd\/radio\/spot\/",
+    "playlist_name": "playlist.m3u",
+    "schedule_week": "week.json",
+    "station_name": "raumstation"
+}

@@ -5,18 +5,56 @@ foreach($s as $k=>$i)
     $s[$k]['timesort'] = 'ts'.fillLeadingZero($i['h']).fillLeadingZero($i['m']);
 
 $ss = ksortBy($s, 'timesort');
+$keys = array_keys($ss);
 $c = count($s);
+$today = date('Y-m-d');
+
+$dur = strtotime($today.' '.fillLeadingZero($ss[$keys[0]]['h']).':'.$ss[$keys[0]]['m'].':00')-strtotime($today.' 00:00:00');
+$p = $dur/86400*100;
+
 ?>
-<div class="schedule-row">
-    <div class="col-xs-12 schedule-day-col">
-    <? foreach($ss as $item) : ?>
-        <div class="schedule-item" style="width:<?= 100/$c; ?>%" data-percent="<?= $item['start_percent']; ?>" data-weekday="<?= $weekday; ?>" data-hour="<?= $item['h']; ?>" data-minute="<?= $item['m']; ?>" data-show="<?= $item['show']; ?>">
-            <div class="inner">
-            <span class="schedule-title"" data-show="<?= $item['show']; ?>" style="border-bottom:2px solid <?= $action['shows'][$item['show']]['color']; ?>;"><strong><?= $item['show']; ?></strong>
-            <span class="time"><?= $item['h'] . ':' . fillLeadingZero($item['m']); ?></span></span>
+<div class="home">
+    <div class="show-row">
+        <div class="show-title" id="showTitle"></div>
+    </div>
+    <div class="schedule-row">
+        <div class="col-xs-12 schedule-day-col">
+            <div class="schedule-item" style="width:<?= $p; ?>%">
+                <div class="inner">
+                    <span class="schedule-title"><strong></strong>
+                    <span class="time"></span></span>
+                </div>
+            </div>
+        <? $i=0; foreach($ss as $key => $item) :
+            
+            
+            $end_time = strtotime($today.' 23:59:59');
+            if($keys[$i+1])
+                $end_time = strtotime($today.' '.$ss[ $keys[$i+1] ]['h'].':'.$ss[$keys[$i+1]]['m'].':00');
+            
+            $dur = $end_time - strtotime($today.' '.$item['h'].':'.$item['m'].':00');
+            $p = $dur/86400*100;
+        ?>
+            <div class="schedule-item" style="width:<?= $p; ?>%" data-percent="<?= $item['start_percent']; ?>" data-weekday="<?= $weekday; ?>" data-hour="<?= $item['h']; ?>" data-minute="<?= $item['m']; ?>" data-show="<?= $item['show']; ?>">
+                <div class="inner">
+                    <span class="schedule-title" data-show="<?= $item['show']; ?>" style="border-bottom:2px solid <?= $action['shows'][$item['show']]['color']; ?>;"><strong><?= $item['show']; ?></strong>
+                    <span class="time"><?= $item['h'] . ':' . fillLeadingZero($item['m']); ?></span></span>
+                </div>
+            </div>
+        <? $i++; endforeach; ?>
         </div>
-        </div>
-    <? endforeach; ?>
+    </div>
+    <div class="schedule-marker" id="scheduleMarker">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+    <div class="title-row">
+        <div class="song-title" id="songTitle"></div>
+    </div>
+    <div class="song-marker" id="songMarker">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+    <div class="next-button-row">
+        <button class="btn btn-primary" id="buttonNextSong">skip</button>
     </div>
 </div>
 <script>
