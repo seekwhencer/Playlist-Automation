@@ -13,7 +13,7 @@ And playlists or shows can be scheduled. They can start automatically by time an
 All data will be stored in json files. No Database needed.
 
 ![ScreenShot](/screenshots/radio_home.png?raw=true "Home Screen")
-![ScreenShot](/screenshots/radio_show.png?raw=true "Show Screen")
+![ScreenShot](/screenshots/radio_shows.png?raw=true "Show Screen")
 ![ScreenShot](/screenshots/radio_schedule.png?raw=true "Scheduling Screen")
 
 Hardware
