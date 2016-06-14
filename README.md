@@ -288,28 +288,28 @@ Web App Urls
 ```bash
 http://yourhost/radio
 ```
-```bash
 - Login
+```bash
 http://yourhost/radio/login
 ```
-```bash
 - Show Edit
+```bash
 http://yourhost/radio/admin/show
 ```
-```bash
 - Scheduling Edit
+```bash
 http://yourhost/radio/admin/schedule
 ```
-```bash
 - Podcast Edit
+```bash
 http://yourhost/radio/admin/podcast
 ```
-```bash
 - Config Edit
+```bash
 http://yourhost/radio/admin/config
 ```
-```bash
 - Cronjobs
+```bash
 http://yourhost/radio/admin/schedule/cron
 http://yourhost/radio/admin/podcast/cron
 ```
