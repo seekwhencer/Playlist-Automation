@@ -266,3 +266,42 @@ Now - reboot:
 ```bash
 sudo shutdown -r now
 ```
+
+Configure Web App
+--------------------------------------
+- Edit config app.php
+```bash
+sudo nano /source/conf/app.php
+```
+- Change
+```bash
+'page_name' => 'changeme', 
+'page_claim' => 'Radio',
+'path_data' => 'data/',
+'station_config' => 'station_config.json',
+'user_secret' => '123456',
+```
+
+Web App Urls
+--------------------------------------
+- Home Screen
+http://yourhost/radio
+
+- Login
+http://yourhost/radio/login
+
+- Show Edit
+http://yourhost/radio/admin/show
+
+- Scheduling Edit
+http://yourhost/radio/admin/schedule
+
+- Podcast Edit
+http://yourhost/radio/admin/podcast
+
+- Config Edit
+http://yourhost/radio/admin/config
+
+- Cronjobs
+http://yourhost/radio/admin/schedule/cron
+http://yourhost/radio/admin/podcast/cron
