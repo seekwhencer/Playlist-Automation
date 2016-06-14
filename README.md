@@ -313,3 +313,62 @@ http://yourhost/radio/admin/config
 http://yourhost/radio/admin/schedule/cron
 http://yourhost/radio/admin/podcast/cron
 ```
+
+Variable Config Defaults
+--------------------------------------
+- max_files_per_playlist | 1000
+- max_playlist_entries | 1000
+- now_playing_show | now_playing_show.txt
+- now_playing_song | now_playing_song.txt
+- path_data_playlist | data/playlist/
+- path_data_podcast | data/podcast/
+- path_data_schedule | data/schedule/
+- path_data_show | data/show/
+- path_data_station | data/station/
+- path_intro | /external/hdd/radio/intro/
+- path_music | /external/hdd/radio/music/
+- path_podcast | /external/hdd/radio/podcast/
+- path_spot | /external/hdd/radio/spot/
+- playlist_name | playlist.m3u
+- schedule_week | week.json
+- station_name | stationname
+
+Show Settings
+--------------------------------------
+
+- Name
+- Folder
+- Recursive
+- Description
+- Color
+- No Shuffle
+
+#### Hot Rotation
+
+- Enable
+- Only
+- Latest Tracks
+- At Beginning
+- Shuffle Beginning
+- Song Age Days
+- Insert Multiplier
+
+#### Podcast
+- Folder
+- Every Nth Song
+- Offset
+- Latest Tracks
+- Random First
+
+#### Spots
+- Folder
+- Every nth Song
+- Offset
+- Shuffle Beginning (if not order shuffle)
+- Order
+- Order By (if order)
+
+
+#### Intro
+- Folder
+- Random
