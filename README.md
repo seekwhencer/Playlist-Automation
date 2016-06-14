@@ -6,6 +6,12 @@ What is this?
 This is a php web app to generate smart playlists and start playlist by timetable.
 Developed by using a Raspberry Pi 3 but usable on every Ubuntu / Debian platform.
 
+The Software generates Playlists by use a folder structure on the harddisk, filled with mp3 files.
+The Randomness will be affected by the age of the files, by a hot rotation of the newest files, and spots and podcast every nth tracks.
+At the time only Deutschlandfunk / DRadio podcasts are usable. The Podcast files will be downloaded and stored on the harddisk.
+And playlists or shows can be scheduled. They can start automatically by time and weekday.
+
+
 Hardware
 --------------------------------------
 - Raspberry Pi 3
@@ -232,6 +238,8 @@ sudo crontab -e
 */1 * * * * sh /data/radio/script/schedule.sh servername
 0 */1 * * * sh /data/radio/script/podcast.sh servername
 ```
+
+One Cronjob writes every 5th second the player status in the file: data/playlist/now_playing_song.txt
 
 Time with Internet Connection
 --------------------------------------
