@@ -10,6 +10,7 @@ The Software generates Playlists by use a folder structure on the harddisk, fill
 The Randomness will be affected by the age of the files, by a hot rotation of the newest files, and spots and podcast every nth tracks.
 At the time only Deutschlandfunk / DRadio podcasts are usable. The Podcast files will be downloaded and stored on the harddisk.
 And playlists or shows can be scheduled. They can start automatically by time and weekday.
+All data will be stored in json files. No Database needed.
 
 
 Hardware
@@ -376,7 +377,44 @@ Show Settings
 - Order
 - Order By (if order)
 
-
 #### Intro
 - Folder
 - Random
+
+Grunt, Bower workflow
+--------------------------------------
+
+To work on the Software, use Grunt for building and Bower for the dependency management.
+
+- Install Node Packet Manager
+```bash
+sudo apt-get install nodejs npm
+```
+- one time, for the first time
+```bash
+npm install bower -g
+```
+- change into directory
+```bash
+cd /data/radio
+```
+- Install Grunt Modules
+```bash
+npm install grunt --save-dev
+npm install grunt-contrib-jshint --save-dev
+npm install grunt-contrib-less --save-dev
+npm install grunt-contrib-watch --save-dev
+npm install grunt-bower-task --save-dev
+npm install grunt-bowercopy --save-dev
+npm install grunt-contrib-csslint --save-dev
+npm install grunt-sync --save
+```
+- Watch the src folder
+```bash
+grunt watch
+```
+- Export and fetch newest dependencies into the htdocs folder
+```bash
+grunt export
+```
+
