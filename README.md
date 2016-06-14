@@ -49,14 +49,15 @@ sudo chmod -R 776 /data
 Install Harddrive
 --------------------------------------
 - Check device name
-
+Get the devicename from the plugged harddrive. It is important, to get the right one!
 ```bash
 blkid
 ```
 
 - Format disk (attention)
+The vfat format is readable by Windows. Replace the ???? with your device name. It could be 'sda2' or so...
 ```bash
-sudo mkfs.vfat /dev/??? -n drivename
+sudo mkfs.vfat /dev/???? -n drivename
 ```
 
 - Create directories on SD
@@ -417,4 +418,10 @@ grunt watch
 ```bash
 grunt export
 ```
+
+It is important to work on the src folder, not on the htdocs folder.
+The grunt watch task syncs the src with the htdocs folder and overwrites every changes in htdocs.
+If you're working on the sources, use the src folder and let a grunt watch task to do this job.
+If no grunt watch task is running, you can use grunt export to sync manually.
+
 
