@@ -12,6 +12,7 @@ At the time only Deutschlandfunk / DRadio podcasts are usable. The Podcast files
 And playlists or shows can be scheduled. They can start automatically by time and weekday.
 All data will be stored in json files. No Database needed.
 
+![Alt text](/screenshots/radio_hime.png?raw=true "Home Screen")
 
 Hardware
 --------------------------------------
