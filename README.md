@@ -285,23 +285,31 @@ sudo nano /source/conf/app.php
 Web App Urls
 --------------------------------------
 - Home Screen
+```bash
 http://yourhost/radio
-
+```
+```bash
 - Login
 http://yourhost/radio/login
-
+```
+```bash
 - Show Edit
 http://yourhost/radio/admin/show
-
+```
+```bash
 - Scheduling Edit
 http://yourhost/radio/admin/schedule
-
+```
+```bash
 - Podcast Edit
 http://yourhost/radio/admin/podcast
-
+```
+```bash
 - Config Edit
 http://yourhost/radio/admin/config
-
+```
+```bash
 - Cronjobs
 http://yourhost/radio/admin/schedule/cron
 http://yourhost/radio/admin/podcast/cron
+```
