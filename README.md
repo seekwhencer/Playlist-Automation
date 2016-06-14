@@ -64,7 +64,7 @@ sudo chown -R pi:pi /external
 sudo nano /data/radio/script/fstab/hdd
 ```
 
--- Add edit line
+- Add edit line
 ```bash
 /dev/sda1       /external/hdd   vfat    defaults,umask=000      0       0 
 ```
@@ -90,34 +90,42 @@ sudo /etc/init.d/icecast2 reload
 Configure MPD
 --------------------------------------
 ```bash
-sudo mv /etc/mpd.config /data/radio/scripts/mpd.config
-sudo nano /etc/mpd.config
+sudo mv /etc/mpd.conf /data/radio/scripts/conf/mpd.conf
+sudo nano /data/radio/scripts/conf/mpd_playlist.conf
 ```
 Use this
 ```bash
-playlist_directory      "/data/radio/htdocs/data/playlist"
-music_directory         "/external/hdd/radio"
-user                    "pi"
-db_file                 "/var/lib/mpd/tag_cache"
-pid_file                "/data/radio/scripts/pid"
-buffer_before_play     "30%"
+playlist_directory   "/data/radio/htdocs/data/playlist"
+music_directory      "/external"
+user                 "pi"
+db_file              "/data/radio/script/conf/mpd.cache"
+pid_file             "/data/radio/script/conf/mpd_playlist.pid"
+buffer_before_play   "30%"
+port                 "6600"
+
+log_level            "default"
+log_file             "/data/radio/script/conf/mpd_playlist.log"
+
+bind_to_address      "127.0.0.1"
+
 audio_output {
     type        "shout"
     encoding    "mp3"
-    name        "changeme"
+    name        "NFS One Playlist"
     host        "localhost"
     port        "8000"
-    mount       "/live"
+    mount       "/playlist"
     password    "changeme"
     bitrate     "128"
     format      "44100:16:2"
-    user        "source"
 }
+
 audio_output {
     type "alsa"
     name "fake out"
     driver "null"
 }
+
 ```
 
 Replace user to pi:pi in
@@ -142,7 +150,7 @@ sudo cp /data/radio/scripts/nfs.conf /etc/apache2/sites-enabled/servername.conf
 sudo nano /etc/apache2/sites-enabled/servername.conf
 ```
 
--- Change
+- Change
 ```bash
 ServerName servername
 ```
@@ -152,7 +160,7 @@ ServerName servername
 sudo nano /etc/php5/apache2/php.ini
 ```
 
--- Change
+- Change
 ```bash
 max_execution_time = 3600
 short_open_tag = On
@@ -165,7 +173,7 @@ date.timezone = Europe/Berlin
 sudo nano /etc/apache2/envvars
 ```
 
--- Change
+- Change
 ```bash
 export APACHE_RUN_USER=pi
 export APACHE_RUN_GROUP=pi
@@ -181,7 +189,7 @@ sudo a2enmod rewrite
 sudo nano /etc/apache2/apache.config
 ```
 
--- Change
+- Change
 ```bash
 #<Directory />
 #       Options FollowSymLinks
