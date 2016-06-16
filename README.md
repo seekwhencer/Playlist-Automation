@@ -237,6 +237,7 @@ Ramdisk
 ```bash
 sudo mkdir /mnt/RAMDisk
 sudo chown pi:pi -R /mnt/RAMDisk
+sudo chmod 777 -R /mnt/RAMDisk
 ```
 
 Cronjobs

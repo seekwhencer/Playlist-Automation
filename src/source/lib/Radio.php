@@ -446,6 +446,12 @@ class Radio {
     
     public function getNowPlaylingShow(){
         $pathFile = $this -> Config -> get('path_ramdisk').$this -> Config -> get('now_playing_show');
+        
+        if(!file_exists($pathFile)){
+            $pathAlternativeFile = $this -> Config -> get('path_data_playlist').$this -> Config -> get('now_playing_show');
+            copy($pathAlternativeFile, $pathFile);
+        }
+        
         if(file_exists($pathFile)){
             $showName = trim(implode(file($pathFile)));
             
@@ -457,10 +463,13 @@ class Radio {
             
             return $now_playing_show;
         } else {
+            
+            
             return false;
         }
     }
-    
+   
+
     public function getNowPlayingSong(){
         $pathFile = $this -> Config -> get('path_ramdisk').$this -> Config -> get('now_playing_song');
         if(file_exists($pathFile)){
