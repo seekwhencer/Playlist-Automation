@@ -490,7 +490,7 @@ denyinterfaces wlan0
 sudo nano /etc/sysctl.conf
 ```
 
-- Change 8uncomment)
+- Change (uncomment)
 ```bash
 net.ipv4.ip_forward=1
 ```
