@@ -434,24 +434,35 @@ class Radio {
     
     public function writeNowPlayingShow($show){
         $pathFile = $this -> Config -> get('path_data_playlist').$this -> Config -> get('now_playing_show');
+        $fh = fopen($pathFile,'w+');
+        fwrite($fh, $show['slug']);
+        fclose($fh);
         
+        $pathFile = $this -> Config -> get('path_ramdisk').$this -> Config -> get('now_playing_show');
         $fh = fopen($pathFile,'w+');
         fwrite($fh, $show['slug']);
         fclose($fh);
     }
     
     public function getNowPlaylingShow(){
-        $pathFile = $this -> Config -> get('path_data_playlist').$this -> Config -> get('now_playing_show');
+        $pathFile = $this -> Config -> get('path_ramdisk').$this -> Config -> get('now_playing_show');
         if(file_exists($pathFile)){
-            $showName = implode(file($pathFile));
-            return $showName;
+            $showName = trim(implode(file($pathFile)));
+            
+            foreach($this->Show as $s){
+                if($s['slug']==$showName){
+                    $now_playing_show = $s;
+                }
+            }
+            
+            return $now_playing_show;
         } else {
             return false;
         }
     }
     
     public function getNowPlayingSong(){
-        $pathFile = $this -> Config -> get('path_data_playlist').$this -> Config -> get('now_playing_song');
+        $pathFile = $this -> Config -> get('path_ramdisk').$this -> Config -> get('now_playing_song');
         if(file_exists($pathFile)){
             $s = implode(file($pathFile));
             $split = explode('[playing]',$s);

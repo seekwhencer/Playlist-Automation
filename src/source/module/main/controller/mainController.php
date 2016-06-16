@@ -23,18 +23,12 @@ class mainController {
         
         $Radio->getShows();
         
-        $npShowName = $Radio->getNowPlaylingShow();
-        $npSongName = $Radio->getNowPlayingSong();
-        
-        foreach($Radio->Show as $s){
-            if($s['slug']==$npShowName){
-                $now_playing_show = $s;
-            }
-        }
-                   
+        $npShow = $Radio->getNowPlaylingShow();
+        $npSong = $Radio->getNowPlayingSong();
+               
         $return = array(
-            'show' => $now_playing_show['name'],
-            'song' => $npSongName
+            'show' => $npShow['name'],
+            'song' => $npSong 
         );
         
         echo json_encode($return);

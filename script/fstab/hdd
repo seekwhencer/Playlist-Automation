@@ -1,1 +1,5 @@
+# The external harddisk
 /dev/sda2       /external/hdd   vfat    defaults,umask=000      0       0
+
+# the 2MB ram disk
+tmpfs /mnt/RAMDisk tmpfs nodev,nosuid,size=2M 0 0

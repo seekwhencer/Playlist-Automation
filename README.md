@@ -75,7 +75,7 @@ sudo chown -R pi:pi /external
 sudo nano /data/radio/script/fstab/hdd
 ```
 
-- Add edit line
+- Edit line, replace sda1 with your right one device name
 ```bash
 /dev/sda1       /external/hdd   vfat    defaults,umask=000      0       0 
 ```
@@ -85,7 +85,7 @@ Configure Icecast
 ```bash
 sudo nano /etc/icecast2/icecast.xml
 ```
-Replace the hostename and passwords
+- Replace the hostename and passwords
 ```bash
 <source-password>changeme</source-password>
 <relay-password>changeme</relay-password>
@@ -93,7 +93,7 @@ Replace the hostename and passwords
 <port>8000</port>
 <hostname>changeme</hostname>
 ```
-Reload Icecast Config
+- Reload Icecast Config
 ```bash
 sudo /etc/init.d/icecast2 reload
 ```
@@ -104,7 +104,7 @@ Configure MPD
 sudo mv /etc/mpd.conf /data/radio/scripts/conf/mpd.conf
 sudo nano /data/radio/scripts/conf/mpd_playlist.conf
 ```
-Use this
+- Use this
 ```bash
 playlist_directory   "/data/radio/htdocs/data/playlist"
 music_directory      "/external"
@@ -139,12 +139,12 @@ audio_output {
 
 ```
 
-Replace user to pi:pi in
+- Replace user to pi:pi in
 ```bash
 sudo nano /etc/init.d/mpd
 ```
 
-Disable MPD on system start
+- Disable MPD on system start
 ```bash
 sudo update-rc.d mpd disable
 ```
@@ -153,7 +153,7 @@ Configure Apache
 --------------------------------------
 - Move site config to apache folder
 ```bash
-sudo cp /data/radio/scripts/nfs.conf /etc/apache2/sites-enabled/servername.conf
+sudo cp /data/radio/scripts/conf/nfs.conf /etc/apache2/sites-enabled/servername.conf
 ```
 
 - Edit site config
@@ -232,6 +232,12 @@ memory_limit = 256M
 max_execution_time
 max_input_time
 ```
+Ramdisk
+--------------------------------------
+```bash
+sudo mkdir /mnt/RAMDisk
+sudo chown pi:pi -R /mnt/RAMDisk
+```
 
 Cronjobs
 --------------------------------------
@@ -240,6 +246,7 @@ sudo crontab -e
 ```
 ```bash
 */1 * * * * sh /data/radio/script/save_mpd_status.sh
+*/1 * * * * sh /data/radio/script/save_icecast_status.sh servername
 */1 * * * * sh /data/radio/script/schedule.sh servername
 0 */1 * * * sh /data/radio/script/podcast.sh servername
 ```

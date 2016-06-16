@@ -28,7 +28,7 @@ class adminController {
 		);
 	}
     
-        
+    /*    
     public function threadAction(){
         include_once('source/lib/WSServer.php');
         
@@ -42,6 +42,7 @@ class adminController {
         echo 'THREAD';
         
     }
+     */
 
 }
 ?>

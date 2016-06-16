@@ -1,5 +1,4 @@
 #!/bin/sh
-
 counter=0
 sleep=2
 times=30
@@ -11,8 +10,8 @@ while true; do
   if [ $counter -eq $times ]; then
     exit 1
   else
-    #mpc > /data/radio/htdocs/data/playlist/now_playing_song.txt &
-    mpc > /mnt/RAMDisk/now_playing_song.txt &
+#    wget -O /data/radio/htdocs/data/playlist/now_icecast_status.json http://$1:8000/status-json.xsl &
+    wget -O /mnt/RAMDisk/now_icecast_status.json http://$1:8000/status-json.xsl &
     counter=$((counter+1))
     sleep $sleep
   fi
