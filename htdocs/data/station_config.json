@@ -12,6 +12,7 @@
     "path_music": "\/external\/hdd\/radio\/music\/",
     "path_podcast": "\/external\/hdd\/radio\/podcast\/",
     "path_spot": "\/external\/hdd\/radio\/spot\/",
+    "path_ramdisk": "\/mnt\/RAMDisk\/",
     "playlist_name": "playlist.m3u",
     "schedule_week": "week.json",
     "station_name": "raumstation"
