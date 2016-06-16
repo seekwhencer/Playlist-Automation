@@ -12,5 +12,6 @@ sudo mount /dev/sda2
 sleep 2
 sudo cp /data/radio/script/fstab/backup /etc/fstab
 echo ""
-
+sudo ifdown --force wlan0
+sudo ifup wlan0
 sudo sh /data/radio/script/start_mpd.sh &

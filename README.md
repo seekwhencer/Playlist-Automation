@@ -434,4 +434,70 @@ The grunt watch task syncs the src with the htdocs folder and overwrites every c
 If you're working on the sources, use the src folder and let a grunt watch task to do this job.
 If no grunt watch task is running, you can use grunt export to sync manually.
 
+Wifi Access Point with onboard Wifi (since Pi3)
+--------------------------------------
 
+- Edit network interfaces
+```bash
+sudo nano /etc/network/interfaces
+```
+
+- Use this for wlan0
+```bash
+allow-hotplug wlan0
+auto wlan0
+iface wlan0 inet static
+ address 25.25.25.1
+ netmask 255.255.255.0
+ broadcast 25.25.25.255
+ post-up sudo hostapd -B /data/radio/script/conf/hostapd.conf > /dev/null; sleep 5; sudo service dnsmasq restart &
+ down sudo killall hostapd
+```
+
+- Install hostapd and dnsmasq
+```bash
+sudo apt-get install hostapd dnsmasq
+```
+
+- Disable hostapd service
+```bash
+sudo update-rc.d hostapd disable
+sudo update-rc.d dnsmasq disable
+```
+
+- Edit dnsmasq config
+```bash
+sudo nano /etc/dnsmasq.conf
+```
+- Change
+```bash
+interface=wlan0
+dhcp-range=25.25.25.50,25.25.25.150,12h
+```
+
+- Edit DHCPD config
+```bash
+sudo nano /etc/dhcpcd.conf
+```
+
+- Add on bottom
+```bash
+denyinterfaces wlan0
+```
+
+- Enable IP4 Forwarding on next reboot
+```bash
+sudo nano /etc/sysctl.conf
+```
+
+- Change 8uncomment)
+```bash
+net.ipv4.ip_forward=1
+```
+
+Finally
+--------------------------------------
+- Reboot
+```bash
+sudo reboot
+```
