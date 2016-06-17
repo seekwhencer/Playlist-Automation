@@ -528,7 +528,9 @@ net.ipv4.ip_forward=1
 ```
 
 - Remove default apache host
+```bash
 sudo unlink /etc/apache2/sites-enabled/000-default.conf
+```
 
 Finally
 --------------------------------------
