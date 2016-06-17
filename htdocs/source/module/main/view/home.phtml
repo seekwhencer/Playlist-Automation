@@ -17,6 +17,12 @@ $p = $dur/86400*100;
     <div class="show-row">
         <div class="show-title" id="showTitle"></div>
     </div>
+    <div class="title-row">
+        <div class="song-title" id="songTitle"></div>
+    </div>
+    <div class="song-marker" id="songMarker">
+        <i class="fa fa-arrow-up"></i>
+    </div>
     <div class="schedule-row">
         <div class="col-xs-12 schedule-day-col">
             <div class="schedule-item" style="width:<?= $p; ?>%">
@@ -47,12 +53,7 @@ $p = $dur/86400*100;
     <div class="schedule-marker" id="scheduleMarker">
         <i class="fa fa-arrow-up"></i>
     </div>
-    <div class="title-row">
-        <div class="song-title" id="songTitle"></div>
-    </div>
-    <div class="song-marker" id="songMarker">
-        <i class="fa fa-arrow-up"></i>
-    </div>
+
     <div class="next-button-row">
         <button class="btn btn-primary" id="buttonNextSong">skip</button>
     </div>

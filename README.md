@@ -34,9 +34,7 @@ Software
 
 Install all Dependencies
 --------------------------------------
-```bash
-sudo apt-get install icecast2 mpd mpc apache2 php5 ntp
-```
+`sudo apt-get install icecast2 mpd mpc apache2 php5 ntp`
 
 Create Folders an get repository
 --------------------------------------
