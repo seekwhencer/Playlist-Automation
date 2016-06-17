@@ -45,6 +45,13 @@ sudo mkdir /data
 cd /data
 sudo git clone https://github.com/seekwhencer/Playlist-Automation.git
 sudo mv Playlist-Automation radio
+
+sudo mkdir /data/web
+sudo mkdir /data/web/root
+sudo mkdir /data/web/root/htdocs
+sudo mkdir /data/web/home
+sudo mkdir /data/web/home/htdocs
+
 sudo chown -R pi:pi /data
 sudo chmod -R 776 /data
 ```
@@ -153,8 +160,11 @@ Configure Apache
 --------------------------------------
 - Move site config to apache folder
 ```bash
-sudo cp /data/radio/scripts/conf/nfs.conf /etc/apache2/sites-enabled/servername.conf
+sudo cp /data/radio/scripts/conf/radio.conf /etc/apache2/sites-enabled/servername.conf
 ```
+
+- Remove default apache host
+sudo unlink /etc/apache2/sites-enabled/000-default.conf
 
 - Edit site config
 ```bash
@@ -393,7 +403,7 @@ Show Settings
 - Folder
 - Random
 
-Grunt, Bower workflow
+Grunt, Bower workflow (not a must, but it's better)
 --------------------------------------
 
 To work on the Software, use Grunt for building and Bower for the dependency management.
@@ -438,6 +448,19 @@ If no grunt watch task is running, you can use grunt export to sync manually.
 Wifi Access Point with onboard Wifi (since Pi3)
 --------------------------------------
 
+To use the Web-App on a smartphone or tablet - set up a Wifi Access Point and connect to it.
+Then call the URL: http://yourhost/radio.
+
+To catch all hosts to 25.25.25.1, use the dnsmasq "address" parameter.
+When you are connected to the access point, enter some url in the browser. You will be redirected to the unhidden main menu.
+
+It exists the folder /data/web/root/htdocs - this is the catch all target and documentroot of port 80 (http://yourhost).
+Simply a redirect from this to http://yourhost/home changes the base url.
+In /data/web/home/htdocs are the unhidden main menu. On this page you will find some jump buttons:
+radio home, radio admin (login), icecast status and the direct link to listen directly in the browser.
+
+Actually there are no web data in this project for the unhidden radio pi menu!
+
 - Edit network interfaces
 ```bash
 sudo nano /etc/network/interfaces
@@ -465,7 +488,14 @@ sudo apt-get install hostapd dnsmasq
 sudo update-rc.d hostapd disable
 sudo update-rc.d dnsmasq disable
 ```
-
+- Edit hostapd.conf from this repo
+```bash
+sudo nano /data/radio/script/conf/hostapd.conf
+```
+- Change
+```bash
+wpa_passphrase
+```
 - Edit dnsmasq config
 ```bash
 sudo nano /etc/dnsmasq.conf
@@ -474,6 +504,7 @@ sudo nano /etc/dnsmasq.conf
 ```bash
 interface=wlan0
 dhcp-range=25.25.25.50,25.25.25.150,12h
+address=/#/25.25.25.1
 ```
 
 - Edit DHCPD config
@@ -495,6 +526,9 @@ sudo nano /etc/sysctl.conf
 ```bash
 net.ipv4.ip_forward=1
 ```
+
+- Remove default apache host
+sudo unlink /etc/apache2/sites-enabled/000-default.conf
 
 Finally
 --------------------------------------
