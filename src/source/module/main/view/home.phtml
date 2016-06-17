@@ -55,11 +55,32 @@ $p = $dur/86400*100;
     </div>
 
     <div class="next-button-row">
-        <button class="btn btn-primary" id="buttonNextSong">skip</button>
+        <button class="btn btn-primary" id="buttonNextSong">skip</button>  <button class="btn btn-primary" id="buttonPlay">Play</button> <button class="btn btn-primary" id="buttonStop" style="display:none;">Stop</button>
     </div>
 </div>
+<audio id="player" src=""></audio>
 <script>
-    $(window).on('ready', function(){
+    var STREAM_URL = 'http://<?= $_SERVER['HTTP_HOST']; ?>:8000/playlist';
+    
+    $(document).on('ready', function(){
+        
+        $('#buttonPlay').on('click',function(){
+            var player = $('#player')[0];
+            player.src=STREAM_URL;
+            player.play();
+            this.blur();
+            $('#buttonStop').show();
+            $(this).hide();
+        });
+        
+        $('#buttonStop').on('click',function(){
+            var player = $('#player')[0];
+            player.pause();
+            player.src='';
+            this.blur();
+            $('#buttonPlay').show();
+            $(this).hide();
+        });
         
     });
 </script>
