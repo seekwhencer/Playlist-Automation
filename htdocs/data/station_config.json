@@ -15,5 +15,10 @@
     "path_ramdisk": "\/mnt\/RAMDisk\/",
     "playlist_name": "playlist.m3u",
     "schedule_week": "week.json",
-    "station_name": "raumstation"
+    "station_name": "stationname",
+    "icecast_host": "servername",
+    "icecast_port": "8000",
+    "icecast_endpoint": "playlist",
+    "icecast_admin": "admin",
+    "icecast_pass": "change!me"
 }

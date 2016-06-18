@@ -257,6 +257,7 @@ sudo crontab -e
 */1 * * * * sh /data/radio/script/save_mpd_status.sh
 */1 * * * * sh /data/radio/script/save_icecast_status.sh servername
 */1 * * * * sh /data/radio/script/schedule.sh servername
+*/1 * * * * sh /data/radio/script/update_stream_meta.sh servername
 0 */1 * * * sh /data/radio/script/podcast.sh servername
 ```
 

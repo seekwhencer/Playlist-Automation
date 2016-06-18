@@ -8,6 +8,7 @@ class Radio {
     public $Schedule;
     public $Podcast;
     public $Intro;
+    public $StreamMeta;
 
     public $Suffix = array('.mp3');
     public $Excludes = array('Thumbs.db', '.', '..');
@@ -15,6 +16,9 @@ class Radio {
     public function __construct($options = false) {
         include_once('source/lib/Config.php');
         $this -> Config = new Config();
+        
+        include_once('source/lib/radio/StreamMeta.php');
+        $this -> StreamMeta = new StreamMeta();
         
         if($options===false){
             $this -> getStations();
@@ -319,7 +323,7 @@ class Radio {
         fclose($fh);
         
         $this -> writeNowPlayingShow($show);
-        
+               
         return $playlist;
     }
 
@@ -442,6 +446,18 @@ class Radio {
         $fh = fopen($pathFile,'w+');
         fwrite($fh, $show['slug']);
         fclose($fh);
+        
+        
+        // save a stream meta message        
+        $this -> StreamMeta -> set(
+            array(
+                'message'   => $show['name'].' . '.$show['meta'].' . '.$this -> Config -> get('station_name'),
+                'start'     => mktime(), // timestamp, now
+                'duration'  => 20, // show for x seconds 
+            ),
+            $this
+        );
+        
     }
     
     public function getNowPlaylingShow(){
@@ -473,19 +489,23 @@ class Radio {
     public function getNowPlayingSong(){
         $pathFile = $this -> Config -> get('path_ramdisk').$this -> Config -> get('now_playing_song');
         if(file_exists($pathFile)){
-            $s = implode(file($pathFile));
-            $split = explode('[playing]',$s);
-            $splitRight = explode('(',$split[1]);
-            $split2Right = explode(')',$splitRight[1]);
-            
+                
+            $input = file($pathFile);    
+            $splitRight = explode('(',$input[4]);
+            $split2Right = explode(')',$splitRight[1]);         
             $seek = str_replace('%', '', $split2Right[0]);
             
-            $songName = str_replace("\n", "", $split[0]);
-            return array ('song' => $songName, 'seek' => $seek);
+            return array (
+                'song' => $input[0].' - '.$input[1],
+                'title' => $input[0],
+                'artist' => $input[1],
+                'seek' => $seek
+            );
+            
         } else {
             return false;
         }
-    }
+    } 
 
     public function deleteSchedule($data){
         foreach($this -> Schedule[intval($data['wd'])] as $i=>$item) {

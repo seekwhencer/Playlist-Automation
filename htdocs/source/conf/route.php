@@ -270,14 +270,14 @@ $this->route = array(
         'is_login'      => true
     ),
     
-        
-    'admin/thread' => array(
-        'label'         =>'Websocket Server Thread',
-        'module'        =>'admin',
-        'controller'    =>'admin',
-        'action'        =>'thread',
-        'view'          => 'index/thread',
-        'is_login'      =>'both',
+      
+    'admin/streammetacron' => array(
+        'label'         => 'Admin Stream Meta Cronjob',
+        'module'        => 'admin',
+        'controller'    => 'admin',
+        'action'        => 'streammetacron',
+        'view'          => 'streammetacron',
+        'is_login'      => 'both',
         'is_xhr'        => true
     ),
     

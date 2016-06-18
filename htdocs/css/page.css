@@ -76,6 +76,9 @@
     font-size: 1em;
     padding: 5px;
   }
+  .schedule-marker {
+    bottom: 0px;
+  }
 }
 .well {
   background-color: rgba(0, 0, 0, 0.1);

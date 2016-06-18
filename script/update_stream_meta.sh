@@ -1,5 +1,4 @@
 #!/bin/sh
-
 counter=0
 sleep=2
 times=30
@@ -11,10 +10,8 @@ while true; do
   if [ $counter -eq $times ]; then
     exit 1
   else
-    #mpc > /data/radio/htdocs/data/playlist/now_playing_song.txt &
-    mpc -f "%title%\n%artist%\n%time%\n%file%" > /mnt/RAMDisk/now_playing_song.txt &
+    wget -qO- http://$1/radio/admin/streammetacron &> /dev/null
     counter=$((counter+1))
     sleep $sleep
   fi
-
 done

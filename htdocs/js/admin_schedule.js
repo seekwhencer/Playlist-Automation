@@ -22,16 +22,18 @@ var Schedule = {
         var height = $(window).innerHeight() - $('.page-header').outerHeight();
         $('#ScheduleTable').height(height);
 
-        var colHeight = height - $('.schedule-header-row').eq(0).height();
+        var colHeight = height - $('.schedule-col').eq(0).outerHeight();
         $('.schedule-day-col').height(colHeight);
 
         $('.schedule-item').each(function() {
-            var p = parseInt($(this).attr('data-percent')) / 120;
+            var p = parseInt($(this).attr('data-percent')) / 100;
             var ih = colHeight * p;
             $(this).css({
                 'top' : ih + 'px'
             });
         });
+        
+        console.log('window ' + $(window).innerHeight() + ', header '+ $('.page-header').outerHeight() + ', header row ' + $('.schedule-col').eq(0).outerHeight());
     },
 
     addBehavior : function() {

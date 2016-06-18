@@ -148,6 +148,7 @@ form .row {
 
 .schedule-table {
     overflow: hidden;
+    position:relative;
 }
 .schedule-col, .schedule-day-col {
     padding-left: 0px;

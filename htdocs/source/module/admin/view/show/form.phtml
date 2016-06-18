@@ -35,6 +35,10 @@
                         <option value="0" <? if("0" == $show['recursive']) :?> selected <? endif ;?>>No</option>
                     </select>
                 </div>
+                <div class="col-xs-12"  data-toggle="tooltip" title="Meta Data on Stream when Show starts."  data-placement="bottom">
+                    <label for="showForm[meta]">Stream Meta Out</label>
+                    <input class="form-control fat" name="showForm[meta]" value="<?= $show['meta']; ?>">
+                </div>
                 <div class="col-xs-12">
                     <label for="showForm[name]">Description</label>
                     <textarea class="form-control" name="showForm[description]" value="<?= $show['description']; ?>"></textarea>

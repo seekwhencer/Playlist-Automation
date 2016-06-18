@@ -28,6 +28,14 @@ class adminController {
 		);
 	}
     
+    public function streammetacronAction(){
+        $streammeta = $this->Radio->StreamMeta->get($this->Radio);
+        if($streammeta !=false){
+            
+        }
+        
+    }
+    
     /*    
     public function threadAction(){
         include_once('source/lib/WSServer.php');
