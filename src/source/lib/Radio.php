@@ -453,7 +453,7 @@ class Radio {
             array(
                 'message'   => $show['name'].' . '.$show['meta'].' . '.$this -> Config -> get('station_name'),
                 'start'     => mktime(), // timestamp, now
-                'duration'  => 20, // show for x seconds 
+                'duration'  => $this -> Config -> get('stream_meta_duration'), // show for x seconds 
             ),
             $this
         );

@@ -15,15 +15,11 @@ class StreamMeta {
     }
     
     public function get($Radio){
-        $stream_meta_path = $Radio->Config->get('path_ramdisk').'streammeta.json';
-        $live_meta = $this->getIcecast($Radio);
-        
+        $stream_meta_path = $Radio->Config->get('path_ramdisk').'streammeta.json';        
         if(file_exists($stream_meta_path)){
             $stream_meta = json_decode(implode(file($stream_meta_path)),true);
-            if(mktime() > ($stream_meta['start'] + $stream_meta['duration']) ){
+            if( mktime() > ($stream_meta['start'] + $stream_meta['duration']) ){
                 unlink($stream_meta_path);
-            } else {
-                $this->setMeta($stream_meta['message'],$Radio); 
             }
             return $stream_meta;
         }
@@ -31,7 +27,7 @@ class StreamMeta {
     }
     
     public function setMeta($message, $Radio){
-        $icecast_set_meta_url = 'http://'.$Radio->Config->get('icecast_admin').':'.$Radio->Config->get('icecast_pass').'@'.$Radio->Config->get('icecast_host').':'.$Radio->Config->get('icecast_port').'/admin/metadata?mount=/'.$Radio->Config->get('icecast_endpoint').'&mode=updinfo&song='.$message;
+        $icecast_set_meta_url = 'http://'.$Radio->Config->get('icecast_admin').':'.$Radio->Config->get('icecast_pass').'@'.$Radio->Config->get('icecast_host').':'.$Radio->Config->get('icecast_port').'/admin/metadata?mount=/'.$Radio->Config->get('icecast_endpoint').'&mode=updinfo&song='.urlencode($message);
         shell_exec('wget -qO- "'.$icecast_set_meta_url.'" &> /dev/null');                
         return $icecast_set_meta_url;
     }
@@ -48,5 +44,4 @@ class StreamMeta {
         
         return $return;
     }
-    
 }

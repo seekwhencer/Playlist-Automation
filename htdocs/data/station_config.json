@@ -20,5 +20,8 @@
     "icecast_port": "8000",
     "icecast_endpoint": "playlist",
     "icecast_admin": "admin",
-    "icecast_pass": "change!me"
+    "icecast_pass": "change!me",
+    "stream_meta_every": "20",
+    "stream_meta_every_offset":"0",
+    "stream_meta_duration":"5"
 }

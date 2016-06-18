@@ -29,9 +29,32 @@ class adminController {
 	}
     
     public function streammetacronAction(){
-        $streammeta = $this->Radio->StreamMeta->get($this->Radio);
-        if($streammeta !=false){
-            
+        // meta cycle    
+        $today = strtotime("Today");
+        $seconds = mktime() - $today;
+        $diff = ($seconds+$this->Radio->Config->get('stream_meta_every_offset')) % $this->Radio->Config->get('stream_meta_every');
+        
+        echo $diff;
+        
+        if( $diff==0){
+            $show = $this->Radio->getNowPlaylingShow();
+            $response = $this -> Radio -> StreamMeta -> set(
+                array(
+                    'message'   => $this -> Radio -> Config -> get('station_name'). ' - NOW: ' . $show['name'].' . '.$show['meta'],
+                    'start'     => mktime(), // timestamp, now
+                    'duration'  => $this->Radio->Config->get('stream_meta_duration'), // show for x seconds 
+                ),
+                $this->Radio
+            );
+        }    
+        
+        // release meta on stream   
+        $stream_meta = $this->Radio->StreamMeta->get($this->Radio);
+        if($stream_meta !=false){
+            $response = $this->Radio->StreamMeta->setMeta($stream_meta['message'],$this->Radio); 
+        } else {
+            $song = $this->Radio->getNowPlayingSong();
+            $response = $this->Radio->StreamMeta->setMeta(trim($song['artist']).' - '.trim($song['title']),$this->Radio);
         }
         
     }
