@@ -33,9 +33,7 @@ class adminController {
         $today = strtotime("Today");
         $seconds = mktime() - $today;
         $diff = ($seconds+$this->Radio->Config->get('stream_meta_every_offset')) % $this->Radio->Config->get('stream_meta_every');
-        
-        echo $diff;
-        
+                
         if( $diff==0){
             $show = $this->Radio->getNowPlaylingShow();
             $response = $this -> Radio -> StreamMeta -> set(

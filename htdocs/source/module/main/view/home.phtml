@@ -1,4 +1,6 @@
 <?
+global $_u;
+
 $weekday = date("N");
 $s = $action['schedule'][$weekday];
 foreach($s as $k=>$i)
@@ -53,10 +55,12 @@ $p = $dur/86400*100;
     <div class="schedule-marker" id="scheduleMarker">
         <i class="fa fa-arrow-up"></i>
     </div>
-
+    
     <div class="next-button-row">
-        <button class="btn btn-primary" id="buttonNextSong">skip</button>  <button class="btn btn-primary" id="buttonPlay">Play</button> <button class="btn btn-primary" id="buttonStop" style="display:none;">Stop</button>
+        <? if($_u->isLogin()) : ?><button class="btn btn-primary" id="buttonNextSong">skip</button><? endif; ?>
+        <button class="btn btn-primary" id="buttonPlay">Play</button> <button class="btn btn-primary" id="buttonStop" style="display:none;">Stop</button>
     </div>
+    
 </div>
 <audio id="player" src=""></audio>
 <script>

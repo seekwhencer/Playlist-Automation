@@ -162,7 +162,9 @@ sudo cp /data/radio/scripts/conf/radio.conf /etc/apache2/sites-enabled/servernam
 ```
 
 - Remove default apache host
+```bash
 sudo unlink /etc/apache2/sites-enabled/000-default.conf
+```
 
 - Edit site config
 ```bash
@@ -537,3 +539,35 @@ Finally
 ```bash
 sudo reboot
 ```
+
+How to update
+--------------------------------------
+
+- create backup folder for the first time
+```bash
+mkdir /data/backup
+mkdir /data/backup/radio
+mkdir /data/backup/radio/htdocs
+mkdir /data/backup/radio
+mkdir /data/backup/script
+```
+- backup json data from webapp
+```bash
+cp -R /data/radio/htdocs/data /data/backup/radio/htdocs/data
+cp -R /data/radio/script/conf /data/backup/radio/script/conf
+```
+
+- download from github
+```bash
+cd /data
+sudo git clone https://github.com/seekwhencer/Playlist-Automation.git
+sudo mv -R radio radio_
+sudo mv Playlist-Automation radio
+```
+
+- restore backup data
+```bash
+cp -R /data/backup/radio/htdocs/data /data/radio/htdocs/data 
+cp -R /data/backup/radio/script/conf /data/radio/script/conf 
+```
+

@@ -3,8 +3,7 @@
 class StreamMeta {
     
     /**
-     * set a message to the stream meta data
-     * 
+     * save a message file (streammeta.json) in the ramdisk
      */
     public function set($args,$Radio){
         echo '<pre>'.print_r($args,true).'</pre>';
@@ -14,6 +13,11 @@ class StreamMeta {
         fclose($fh);
     }
     
+    /*
+     * read the streammeta.json from ramdisk
+     * if the file is out of date by start and duration, it will be deleted
+     * 
+     */
     public function get($Radio){
         $stream_meta_path = $Radio->Config->get('path_ramdisk').'streammeta.json';        
         if(file_exists($stream_meta_path)){
@@ -26,12 +30,18 @@ class StreamMeta {
         return false;
     }
     
+    /**
+     * set meta to stream
+     */
     public function setMeta($message, $Radio){
         $icecast_set_meta_url = 'http://'.$Radio->Config->get('icecast_admin').':'.$Radio->Config->get('icecast_pass').'@'.$Radio->Config->get('icecast_host').':'.$Radio->Config->get('icecast_port').'/admin/metadata?mount=/'.$Radio->Config->get('icecast_endpoint').'&mode=updinfo&song='.urlencode($message);
         shell_exec('wget -qO- "'.$icecast_set_meta_url.'" &> /dev/null');                
         return $icecast_set_meta_url;
     }
     
+    /*
+     * read the icecast status file from ramdisk
+     */
     public function getIcecast($Radio){
         $icecastStatusPath = $Radio->Config->get('path_ramdisk').'now_icecast_status.json';
         $file =  implode( file($icecastStatusPath) );

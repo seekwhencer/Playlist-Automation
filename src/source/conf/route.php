@@ -32,7 +32,7 @@ $this->route = array(
         'controller'    => 'main',
         'action'        => 'nextsong',
         'view'          => 'nextsong',
-        'is_login'      => 'both',
+        'is_login'      => true,
         'is_xhr'        => true
     ),
     
