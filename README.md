@@ -548,20 +548,19 @@ How to update
 mkdir /data/backup
 mkdir /data/backup/radio
 mkdir /data/backup/radio/htdocs
-mkdir /data/backup/radio
-mkdir /data/backup/script
+mkdir /data/backup/radio/script
 ```
-- backup json data from webapp
+- backup the data from the webapp
 ```bash
 cp -R /data/radio/htdocs/data /data/backup/radio/htdocs/data
 cp -R /data/radio/script/conf /data/backup/radio/script/conf
 ```
 
-- download from github
+- download fresh repository from github
 ```bash
 cd /data
 sudo git clone https://github.com/seekwhencer/Playlist-Automation.git
-sudo mv -R radio radio_
+sudo mv radio radio_
 sudo mv Playlist-Automation radio
 ```
 
