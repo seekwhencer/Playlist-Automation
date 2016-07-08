@@ -452,7 +452,7 @@ class Radio {
         $this -> StreamMeta -> set(
             array(
                 'message'   => $show['name'].' . '.$show['meta'].' . '.$this -> Config -> get('station_name'),
-                'start'     => mktime(), // timestamp, now
+                'start'     => time(), // timestamp, now
                 'duration'  => $this -> Config -> get('stream_meta_duration'), // show for x seconds 
             ),
             $this

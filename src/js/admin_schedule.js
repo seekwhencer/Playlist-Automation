@@ -27,7 +27,8 @@ var Schedule = {
 
         $('.schedule-item').each(function() {
             var p = parseInt($(this).attr('data-percent')) / 100;
-            var ih = colHeight * p;
+            var ih = colHeight * (p*0.95);
+            //ih = ih - 10;
             $(this).css({
                 'top' : ih + 'px'
             });

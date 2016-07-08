@@ -111,13 +111,13 @@ function kfillBy($arr, $bykey) {
 
 function mondayFromCalendarWeek($cw, $year) {
 
-	$first = mktime(0, 0, 0, 1, 1, $year);
+	$first = time(0, 0, 0, 1, 1, $year);
 	$wday = date('w', $first);
 
 	if ($wday <= 4) {
-		$monday = mktime(0, 0, 0, 1, 1 - ($wday - 1), $year);
+		$monday = time(0, 0, 0, 1, 1 - ($wday - 1), $year);
 	} else {
-		$monday = mktime(0, 0, 0, 1, 1 + (7 - $wday + 1), $year);
+		$monday = time(0, 0, 0, 1, 1 + (7 - $wday + 1), $year);
 	}
 
 	$firstmonday = $monday;
@@ -125,7 +125,7 @@ function mondayFromCalendarWeek($cw, $year) {
 	$mon_year = date('Y', $firstmonday);
 	$mon_days = date('d', $firstmonday);
 	$days = ($cw - 1) * 7;
-	$monday_cw = mktime(0, 0, 0, $mon_month, $mon_days + $days, $mon_year);
+	$monday_cw = time(0, 0, 0, $mon_month, $mon_days + $days, $mon_year);
 
 	return $monday_cw;
 }

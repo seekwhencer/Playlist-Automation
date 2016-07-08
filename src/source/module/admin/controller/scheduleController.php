@@ -21,6 +21,7 @@ class scheduleController {
             'schedule' => $this -> Radio -> Schedule,
             'stations' => $this->Radio -> Station,
             'shows' => kfillBy($this->Radio -> Show, 'slug'),
+            'today' => date("N")
             
         );
     }

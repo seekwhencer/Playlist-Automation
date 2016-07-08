@@ -1,3 +1,4 @@
+* {    font-family:Roboto;}
 body, html {
     height: 100%;
 }
@@ -162,6 +163,10 @@ form .row .config-label {
     width: 14.275%;
     border-left: 1px dotted rgba(255,255,255,0.1);
 }
+
+.schedule-col {
+    padding-bottom:5px;
+}
 .schedule-header-row {
 }
 .schedule-header-row .col-xs-1 {
@@ -178,7 +183,7 @@ form .row .config-label {
     text-decoration: none;
     color: #fff;
     display: block;
-    padding: 5px 10px 5px 10px;
+    padding: 3px 10px 3px 10px;
     background: rgba(0,0,0,0.3);
 }
 .schedule-item a.schedule-title:hover {
@@ -283,4 +288,16 @@ ul.listing-podcast li a i {
     display:inline;
     width:inherit;
     text-align:center;
+}
+.schedule-col.today {
+    background:#eee;
+}
+
+.schedule-col.today h3 {
+    color:#000;
+    font-weight:900;
+}
+
+.schedule-day-col.today {
+    background:rgba(0,0,0,0.2);
 }

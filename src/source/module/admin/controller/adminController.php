@@ -31,7 +31,7 @@ class adminController {
     public function streammetacronAction(){
         // meta cycle    
         $today = strtotime("Today");
-        $seconds = mktime() - $today;
+        $seconds = time() - $today;
         $diff = ($seconds+$this->Radio->Config->get('stream_meta_every_offset')) % $this->Radio->Config->get('stream_meta_every');
                 
         if( $diff==0){
@@ -39,7 +39,7 @@ class adminController {
             $response = $this -> Radio -> StreamMeta -> set(
                 array(
                     'message'   => $this -> Radio -> Config -> get('station_name'). ' - NOW: ' . $show['name'].' . '.$show['meta'],
-                    'start'     => mktime(), // timestamp, now
+                    'start'     => time(), // timestamp, now
                     'duration'  => $this->Radio->Config->get('stream_meta_duration'), // show for x seconds 
                 ),
                 $this->Radio

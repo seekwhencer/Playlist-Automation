@@ -22,7 +22,7 @@ class StreamMeta {
         $stream_meta_path = $Radio->Config->get('path_ramdisk').'streammeta.json';        
         if(file_exists($stream_meta_path)){
             $stream_meta = json_decode(implode(file($stream_meta_path)),true);
-            if( mktime() > ($stream_meta['start'] + $stream_meta['duration']) ){
+            if( time() > ($stream_meta['start'] + $stream_meta['duration']) ){
                 unlink($stream_meta_path);
             }
             return $stream_meta;

@@ -524,6 +524,7 @@ sudo nano /etc/dhcpcd.conf
 - Add on bottom
 ```bash
 denyinterfaces wlan0
+nohook resolv.conf
 ```
 
 - Enable IP4 Forwarding on next reboot
@@ -539,6 +540,15 @@ net.ipv4.ip_forward=1
 - Remove default apache host
 ```bash
 sudo unlink /etc/apache2/sites-enabled/000-default.conf
+```
+
+- Create Nameserver resolv.conf.head to prepend your nameserver (router)
+```bash
+sudo nano /etc/resolv.conf.head
+```
+- add ip from your gateway
+```bash
+nameserver 192.168.2.1
 ```
 
 Finally
