@@ -24,7 +24,7 @@
         public function logoutAction(){
             global $_u;
             $_u->logout();
-            redirect('home');
+            redirect('');
         }
         
         

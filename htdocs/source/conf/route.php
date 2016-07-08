@@ -270,6 +270,16 @@ $this->route = array(
         'is_login'      => true
     ),
     
+    'admin/config/setdate' => array(
+        'label'         => 'Admin',
+        'module'        => 'admin',
+        'controller'    => 'config',
+        'action'        => 'setdate',
+        'view'          => 'setdate',
+        'is_login'      => true,
+        'is_xhr'        => true
+    ),
+    
       
     'admin/streammetacron' => array(
         'label'         => 'Admin Stream Meta Cronjob',

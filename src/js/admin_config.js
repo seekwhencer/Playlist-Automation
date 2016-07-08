@@ -9,6 +9,16 @@ $(document).ready(function() {
 
 var Config = {
     addFormBehavior : function(){
-        
+        $('#button-setdate').on('click',function(e){
+            e.preventDefault();
+            
+            $.ajax({
+                'url' : HOME_URL + 'admin/config/setdate',
+                'method' : 'POST',
+                'data' : $('#form-date').serialize()
+            }).done(function(e) {
+                
+            });
+        });
     }
 };

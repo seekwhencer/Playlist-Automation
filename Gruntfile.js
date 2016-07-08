@@ -1,11 +1,11 @@
 /**
  * Gruntfile for Playlist Automation
- * 
+ *
  * Matthias Kallenbach
  * 2016
- * 
+ *
  * Installation:
- * 
+ *
  * npm install grunt --save-dev
  * npm install grunt-contrib-jshint --save-dev
  * npm install grunt-contrib-less --save-dev
@@ -14,11 +14,14 @@
  * npm install grunt-bowercopy --save-dev
  * npm install grunt-contrib-csslint --save-dev
  * npm install grunt-sync --save
- * 
+ *
  */
 module.exports = function(grunt) {
 
     grunt.initConfig({
+        /**
+         *  
+         */
         jshint : {
             files : ['Gruntfile.js', 'src/**/*.js'],
             options : {
@@ -27,20 +30,24 @@ module.exports = function(grunt) {
                 }
             }
         },
-
+        
+        /**
+         * 
+         */
         csslint : {
             lax : {
                 options : {
                     import : false,
-                    quiet: false
+                    quiet : false,
+                    csslintrc: '.csslintrc'
                 },
-                src : [
-                    'src/**/*.css',
-                    '!src/css/radio.bootstrap.css'
-                ]
+                src : ['src/**/*.css', '!src/css/radio.bootstrap.css']
             }
         },
-
+        
+        /**
+         * 
+         */
         less : {
             build : {
                 files : {
@@ -48,7 +55,10 @@ module.exports = function(grunt) {
                 }
             }
         },
-
+        
+        /**
+         * 
+         */
         bowercopy : {
             options : {
                 srcPrefix : 'bower_components'
@@ -85,12 +95,32 @@ module.exports = function(grunt) {
             },
 
         },
-
+        
+        /**
+         * 
+         */
+        googlefonts : {
+            build : {
+                options : {
+                    fontPath : 'build/css/fonts/',
+                    httpPath: 'css/fonts/',
+                    cssFile : 'build/css/fonts.css',
+                    fonts : [{
+                        family : 'Roboto',
+                        styles : [400,500,700,900]
+                    }]
+                }
+            }
+        },
+        
+        /**
+         * 
+         */
         watch : {
 
             scripts : {
                 files : ['src/**'],
-                tasks : ['jshint','sync'],
+                tasks : ['jshint', 'sync'],
                 options : {
                     spawn : false,
                 }
@@ -98,7 +128,7 @@ module.exports = function(grunt) {
 
             less : {
                 files : ['src/css/**/*.less'],
-                tasks : ['less','sync'],
+                tasks : ['less', 'sync'],
                 options : {
                     spawn : false,
                 }
@@ -106,7 +136,7 @@ module.exports = function(grunt) {
 
             css : {
                 files : ['src/css/**/*.css', '!src/css/radio.bootstrap.css'],
-                tasks : ['csslint','sync'],
+                tasks : ['csslint', 'sync'],
                 options : {
                     spawn : false,
                 }
@@ -116,49 +146,30 @@ module.exports = function(grunt) {
 
         sync : {
             /*
-             * Called on every watch 
+             * Called on every watch
              */
             build : {
                 files : [{
-                    expand: true,
-                    cwd: 'src/',
-                    src: [ 
-                        '**',
-                        '!**/*.less',
-                        '!data/**/*.json',
-                        '!data/**/*.txt',
-                        '!data/**/*.m3u',
-                        '!.htaccess'
-                    ],
-                    dest: 'build/'
+                    expand : true,
+                    cwd : 'src/',
+                    src : ['**', '!**/*.less', '!data/**/*.json', '!data/**/*.txt', '!data/**/*.m3u', '!.htaccess'],
+                    dest : 'build/'
                 }],
-                updateAndDelete: false
+                updateAndDelete : false
             },
-            
-            
+
             /**
              * Called in the console as "grunt sync:htdocs" or "grunt sync"
              */
             htdocs : {
                 files : [{
-                    expand: true,
-                    cwd: 'build/',
-                    src: [
-                        '**',
-                        '!data/**/*.json',
-                        '!data/**/*.txt',
-                        '!data/**/*.m3u',
-                        '!.htaccess'
-                    ],
-                    dest: 'htdocs/'
+                    expand : true,
+                    cwd : 'build/',
+                    src : ['**', '!data/**/*.json', '!data/**/*.txt', '!data/**/*.m3u', '!.htaccess'],
+                    dest : 'htdocs/'
                 }],
-                updateAndDelete: true,
-                ignoreInDest: [
-                    'data/**/*.json',
-                    'data/**/*.txt',
-                    'data/**/*.m3u',
-                    '.htaccess'
-                ],
+                updateAndDelete : true,
+                ignoreInDest : ['data/**/*.json', 'data/**/*.txt', 'data/**/*.m3u', '.htaccess'],
             },
         }
 
@@ -171,23 +182,23 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-sync');
+    grunt.loadNpmTasks('grunt-google-fonts');
 
     grunt.registerTask('default', ['jshint', 'watch', 'bowercopy', 'less', 'csslint', 'sync']);
     //grunt.registerTask('default', ['jshint', 'watch', 'bowercopy', 'less', 'csslint', 'sync']);
-    
-    
+
     /**
      * Export the "build" folder in the "htdocs" folder
-     * 
+     *
      * call "grunt export"
-     * 
+     *
      * before downloading all dependencies
      * create the less css files
      * and sync the source with the "build" folder
      * after that, sync the "build" folder with the "htdocs" folder
-     * 
+     *
      */
-    grunt.registerTask('export', ['bowercopy', 'less', 'sync']);
+    grunt.registerTask('export', ['googlefonts', 'bowercopy', 'less', 'sync']);
 
 };
 

@@ -1,0 +1,33 @@
+<div class="row form-podcast">
+    <form method="post" action="<?= PAGE_BASE; ?>admin/config" id="form-date">
+        <div class="col-lg-3 col-md-6">
+            <div class="row">
+                <h3>Date & Time</h3>
+            </div>
+        </div>
+        <div class="col-xs-12 form-date-row">
+            <div class="">
+                <input type="text" name="configFormDate[day]" value="<?= date('d'); ?>" class="form-control" placeholder="dd">
+                .
+                <input type="text" name="configFormDate[month]" value="<?= date('m'); ?>" class="form-control" placeholder="mm">
+                .
+                <input type="text" name="configFormDate[year]" value="<?= date('Y'); ?>" class="form-control" placeholder="yyyy">
+            </div>
+
+            <div class="mt">
+                <input type="text" name="configFormDate[hour]" value="<?= date('h'); ?>" class="form-control" placeholder="hh">
+                :
+                <input type="text" name="configFormDate[minute]" value="<?= date('i'); ?>" class="form-control" placeholder="mm">
+                : 00
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 mt">
+                    <button type="submit" class="btn btn-success" id="button-setdate">
+                        set date &amp; time</a>
+                </div>
+            </div>
+        </div>
+</div>
+</form>

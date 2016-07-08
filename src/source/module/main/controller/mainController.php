@@ -3,7 +3,7 @@
 class mainController {
 
 	public function indexAction() {
-	    global $_p;
+	    global $_p, $_u;
         
         $_p->addScript('page_home.js');
         
@@ -11,6 +11,10 @@ class mainController {
         $scheduleController = new scheduleController();
         
         $return = $scheduleController->silentAction();
+        
+        if($_u->isAuth()){
+            
+        }
         
 		return $return;
 	}

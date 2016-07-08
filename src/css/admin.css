@@ -66,9 +66,16 @@ h3 {
 .listing-show {
 }
 form .row {
+    font-size:0.9em;
     padding-right: 10px;
     border-right: inherit;
+    margin-bottom:2px;
 }
+
+form .row .config-label {
+    line-height:2.6em;
+}
+
 .page-header {
     overflow: hidden;
     background-color: rgba(0,0,0,0.5);
@@ -268,3 +275,12 @@ ul.listing-podcast li a i {
 }
 
 
+.form-date-row {
+    
+}
+
+.form-date-row input {
+    display:inline;
+    width:inherit;
+    text-align:center;
+}

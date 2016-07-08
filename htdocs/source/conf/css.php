@@ -4,7 +4,7 @@
                         
             $_p->addStyle('assets/font-awesome.min.css');
             $_p->addStyle('radio.bootstrap.css'); // customized bootstrap
+            $_p->addStyle('fonts.css');
      
-            $_p->addStyle('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900',false,true);
 
 ?>

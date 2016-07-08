@@ -1,5 +1,5 @@
 <?
-global $_u;
+global $_u,$_c;
 
 $weekday = date("N");
 $s = $action['schedule'][$weekday];
@@ -15,7 +15,12 @@ $dur = strtotime($today.' '.fillLeadingZero($ss[$keys[0]]['h']).':'.$ss[$keys[0]
 $p = $dur/86400*100;
 
 ?>
+<a href="" class="btn btn-primary button-open-mainmenu" id="open-main-menu"><i class="fa fa-bars"></i></a>
+<div id="main-navigation" class="main-navigation" style="display:none;">
+    <?= $_c -> partial('header-main-navigation', $action, 'source/module/admin/view/'); ?>
+</div>
 <div class="home">
+
     <div class="show-row">
         <div class="show-title" id="showTitle"></div>
     </div>

@@ -28,4 +28,14 @@
             );
         }
         
+        public function setdateAction(){
+            $params = getParams('configFormDate');
+            
+            foreach($params as $k => $p)
+                $params[$k] = intval($p);
+            
+            $cmd = 'sudo date --set="'.$params['year'].'-'.$params['month'].'-'.$params['day'].' '.$params['hour'].':'.$params['minute'].':00.000"';
+            shell_exec($cmd);
+        }
+        
     }

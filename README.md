@@ -283,6 +283,12 @@ server 3.de.pool.ntp.org
 sudo /etc/init.d/ntp restart
 ```
 
+Or set the Date and Time manually
+
+service ntp stop
+sudo ntpd -gq
+sudo service ntp start
+
 Startup
 --------------------------------------
 ```bash
@@ -430,7 +436,9 @@ npm install grunt-contrib-watch --save-dev
 npm install grunt-bower-task --save-dev
 npm install grunt-bowercopy --save-dev
 npm install grunt-contrib-csslint --save-dev
-npm install grunt-sync --save
+npm install grunt-sync --save-dev
+npm install grunt-google-fonts --save-dev
+
 ```
 - Watch the src folder
 ```bash
