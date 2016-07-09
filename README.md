@@ -612,7 +612,9 @@ Future
 --------------------------------------
 
 - live Source as Show
-- live Source instant Toggle between
+- live Source instant Toggle
+- talk over, mixing live source with playlist source
+- set stream volume
 - disable Scheduling
 - Bluetooth Speaker Support and BT Configuration via Web UI
 - Refactoring
