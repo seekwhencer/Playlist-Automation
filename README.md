@@ -588,3 +588,22 @@ cp -R /data/backup/radio/htdocs/data /data/radio/htdocs/data
 cp -R /data/backup/radio/script/conf /data/radio/script/conf 
 ```
 
+Features & History
+--------------------------------------
+
+June 2016:
+- set the Date and Time with Web UI
+- set Icecast Stream Meta infos periodically, with parameters
+- set Stream Meta Description for Shows
+- dnsmasq resolv head for dhcpd
+- Web UI Home, displaying now playing Show and Track, displaying the %-Seek of the Track and the Plan for Today
+
+Initial:
+- create Shows and map it to Folder (recursive or not) filled with mp3 Files
+- add Opener, Spots and Podcasts to the Show with different parameters like interval, offset, order etc.
+- add Hot Rotation to Shows, that means the newest Files in the Folder will played more frequently - with parameters
+- manage Podcasts (actually: DRadio, Germany)
+- schedule Shows, create a Week Plan and point Shows to Weekday, Hour and Minute
+- configure the most and a lot Setup Parameters (like Folder Paths)
+- login with Password (User Secret)
+
