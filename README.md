@@ -608,3 +608,11 @@ Initial:
 - configure the most and a lot Setup Parameters (like Folder Paths)
 - login with Password (User Secret)
 
+Future
+--------------------------------------
+
+- live Source as Show
+- live Source instant Toggle between
+- disable Scheduling
+- Bluetooth Speaker Support and BT Configuration via Web UI
+- Refactoring
