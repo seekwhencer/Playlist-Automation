@@ -15,6 +15,7 @@ All data will be stored in json files. No Database needed.
 ![ScreenShot](/screenshots/radio_home.png?raw=true "Home Screen")
 ![ScreenShot](/screenshots/radio_shows.png?raw=true "Show Screen")
 ![ScreenShot](/screenshots/radio_schedule.png?raw=true "Scheduling Screen")
+![ScreenShot](/screenshots/radio_podcast.png?raw=true "Scheduling Screen")
 
 Hardware
 --------------------------------------
