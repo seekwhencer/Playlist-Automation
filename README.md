@@ -329,17 +329,18 @@ sudo shutdown -r now
 
 Configure Web App
 --------------------------------------
-- Edit config app.php
+- Edit App Config [htdocs/source/config/app.php](https://github.com/seekwhencer/Playlist-Automation/blob/master/htdocs/source/conf/app.php "htdocs/source/config/app.php")
 ```bash
 sudo nano /source/conf/app.php
 ```
+
 - Change
 ```bash
-'page_name' => 'changeme', 
-'page_claim' => 'Radio',
-'path_data' => 'data/',
-'station_config' => 'station_config.json',
-'user_secret' => '123456',
+'page_name'         => 'Change Me', 
+'page_claim'        => 'Radio',
+'path_data'         => 'data/',
+'station_config'    => 'station_config.json',
+'user_secret'       => 'change!me',
 ```
 
 Web App Urls
