@@ -279,6 +279,10 @@ The Cronjobs collect this Status Informations permanently and make it readable f
 
 [schedule.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/schedule.sh "schedule.sh") and [podcast.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/podcast.sh "podcast.sh") are the Cronjob Pages from the Web App.
 
+The `servername` is what you entered at `Servername` in apache's enabled site: [/etc/apache2/sites-enabled/servername.conf](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/conf/radio.conf "/etc/apache2/sites-enabled/servername.conf")
+
+
+
 Time with Internet Connection
 --------------------------------------
 ```bash
