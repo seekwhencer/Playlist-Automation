@@ -659,4 +659,5 @@ Future
 - set stream volume
 - disable Scheduling
 - Bluetooth Speaker Support and BT Configuration via Web UI
+- More responsive Web UI Support for Smartphones
 - Refactoring

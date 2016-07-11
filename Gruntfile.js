@@ -184,7 +184,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-sync');
     grunt.loadNpmTasks('grunt-google-fonts');
 
-    grunt.registerTask('default', ['jshint', 'watch', 'bowercopy', 'less', 'csslint', 'sync']);
+    grunt.registerTask('default', ['jshint', 'watch', 'less', 'csslint', 'sync']);
     //grunt.registerTask('default', ['jshint', 'watch', 'bowercopy', 'less', 'csslint', 'sync']);
 
     /**
