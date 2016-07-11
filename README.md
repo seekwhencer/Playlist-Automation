@@ -368,13 +368,12 @@ After you got the Sources, make these Steps. After that, you have three Folders:
 /data/radio/src
 ```
 
-htdocs are the online build. untouched configs and data (shows, podcasts, etc.)
-build are the src plus dependencies
-src are the main source - on this we are working.
+'htdocs' are the online build. untouched configs and data (shows, podcasts, etc.). 'build' are the src plus dependencies. 'src' are the main source - on this folder we are working.
 
 A 'grunt watch' and 'grunt export' generates the build and htdocs folder.
 The 'htdocs/data' will be written from the Web App and not overwritten from 'grunt watch' or 'grunt export'.
 
+Take a look in the [Gruntfile.js](https://github.com/seekwhencer/Playlist-Automation/blob/master/Gruntfile.js "Gruntfile.js").
 
 
 - Install Node Packet Manager
