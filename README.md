@@ -285,40 +285,44 @@ The `servername` is what you entered at `ServerName` in apache's enabled site co
 
 Time with Internet Connection
 --------------------------------------
+- Open NTP config
 ```bash
 sudo nano /etc/ntp.conf
 ```
 
-Comment out the existing servers and add these:
+- Comment out the existing servers and add these:
 ```bash
 server 0.de.pool.ntp.org
 server 1.de.pool.ntp.org
 server 2.de.pool.ntp.org
 server 3.de.pool.ntp.org
 ```
-
+- Restart NTP
 ```bash
 sudo /etc/init.d/ntp restart
 ```
 
-Or set the Date and Time manually
-
+- Or set the Date and Time manually
+```bash
 service ntp stop
 sudo ntpd -gq
 sudo service ntp start
+```
+
 
 Startup
 --------------------------------------
+- Open rc.local
 ```bash
 sudo nano /etc/rc.local
 ```
 
-Add this BEFORE exit 0
+- Add this BEFORE exit 0
 ```bash
 sudo sh /data/radio/script/start.sh &
 ```
 
-Now - reboot:
+- Now - reboot:
 ```bash
 sudo shutdown -r now
 ```
