@@ -353,68 +353,29 @@ http://yourhost/radio/admin/schedule/cron
 http://yourhost/radio/admin/podcast/cron
 ```
 
-Variable Config Defaults
---------------------------------------
-- max_files_per_playlist | 1000
-- max_playlist_entries | 1000
-- now_playing_show | now_playing_show.txt
-- now_playing_song | now_playing_song.txt
-- path_data_playlist | data/playlist/
-- path_data_podcast | data/podcast/
-- path_data_schedule | data/schedule/
-- path_data_show | data/show/
-- path_data_station | data/station/
-- path_intro | /external/hdd/radio/intro/
-- path_music | /external/hdd/radio/music/
-- path_podcast | /external/hdd/radio/podcast/
-- path_spot | /external/hdd/radio/spot/
-- playlist_name | playlist.m3u
-- schedule_week | week.json
-- station_name | stationname
 
-Show Settings
---------------------------------------
 
-- Name
-- Folder
-- Recursive
-- Description
-- Color
-- No Shuffle
-
-#### Hot Rotation
-
-- Enable
-- Only
-- Latest Tracks
-- At Beginning
-- Shuffle Beginning
-- Song Age Days
-- Insert Multiplier
-
-#### Podcast
-- Folder
-- Every Nth Song
-- Offset
-- Latest Tracks
-- Random First
-
-#### Spots
-- Folder
-- Every nth Song
-- Offset
-- Shuffle Beginning (if not order shuffle)
-- Order
-- Order By (if order)
-
-#### Intro
-- Folder
-- Random
 
 Grunt, Bower workflow (not a must, but it's better)
 --------------------------------------
 
-To work on the Software, use Grunt for building and Bower for the dependency management.
+You can use this Software as you will. I'm using the Workflow Tools: Grunt and Bower.
+After you got the Sources, make these Steps. After that, you have three Folders:
+
+```bash
+/data/radio/htdocs
+/data/radio/build
+/data/radio/src
+```
+
+htdocs are the online build. untouched configs and data (shows, podcasts, etc.)
+build are the src plus dependencies
+src are the main source - on this we are working.
+
+A 'grunt watch' and 'grunt export' generates the build and htdocs folder.
+The 'htdocs/data' will be written from the Web App and not overwritten from 'grunt watch' or 'grunt export'.
+
+
 
 - Install Node Packet Manager
 ```bash
@@ -544,13 +505,21 @@ sudo unlink /etc/apache2/sites-enabled/000-default.conf
 ```
 
 - Create Nameserver resolv.conf.head to prepend your nameserver (router)
+
+In this case we use eth0 for WAN. So dnsmasq changes at start the resolv.conf and you have to add your WAN gateway here.
+Otherwise (if not and dnsmasq is running) the pi has no web. No Time Sync and no Podcasts.
+If you dont know your Gateway IP, take a look into the /etc/resolv.conf when dnsmasq isn't running.
+
 ```bash
 sudo nano /etc/resolv.conf.head
 ```
 - add ip from your gateway
+192.168.2.1 is the default for a German Telekom Speedport WAN. Use your own.
 ```bash
 nameserver 192.168.2.1
 ```
+
+
 
 Finally
 --------------------------------------
@@ -581,6 +550,8 @@ cd /data
 sudo git clone https://github.com/seekwhencer/Playlist-Automation.git
 sudo mv radio radio_
 sudo mv Playlist-Automation radio
+sudo chmod 776 -R radio
+sudo chown pi:pi -R radio
 ```
 
 - restore backup data
@@ -588,6 +559,78 @@ sudo mv Playlist-Automation radio
 cp -R /data/backup/radio/htdocs/data /data/radio/htdocs/data 
 cp -R /data/backup/radio/script/conf /data/radio/script/conf 
 ```
+
+
+Web App - Urls
+--------------------------------------
+- Home Screen
+```bash
+http://yourhost/radio
+```
+- Login
+```bash
+http://yourhost/radio/login
+```
+- Show Edit
+```bash
+http://yourhost/radio/admin/show
+```
+- Scheduling Edit
+```bash
+http://yourhost/radio/admin/schedule
+```
+- Podcast Edit
+```bash
+http://yourhost/radio/admin/podcast
+```
+- Config Edit
+```bash
+http://yourhost/radio/admin/config
+```
+- Cronjobs
+```bash
+http://yourhost/radio/admin/schedule/cron
+http://yourhost/radio/admin/podcast/cron
+```
+
+Show Settings
+--------------------------------------
+
+- Name
+- Folder
+- Recursive
+- Description
+- Color
+- No Shuffle
+
+#### Hot Rotation
+
+- Enable
+- Only
+- Latest Tracks
+- At Beginning
+- Shuffle Beginning
+- Song Age Days
+- Insert Multiplier
+
+#### Podcast
+- Folder
+- Every Nth Song
+- Offset
+- Latest Tracks
+- Random First
+
+#### Spots
+- Folder
+- Every nth Song
+- Offset
+- Shuffle Beginning (if not order shuffle)
+- Order
+- Order By (if order)
+
+#### Intro
+- Folder
+- Random
 
 Features & History
 --------------------------------------
