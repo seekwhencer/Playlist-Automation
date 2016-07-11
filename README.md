@@ -260,14 +260,16 @@ sudo crontab -e
 
 - add this
 ```
-*/1 * * * * sh /data/radio/script/[save_mpd_status.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/save_mpd_status.sh "save_mpd_status.sh")
-*/1 * * * * sh /data/radio/script/[save_icecast_status.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/save_icecast_status.sh "save_icecast_status.sh") servername
-*/1 * * * * sh /data/radio/script/[schedule.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/schedule.sh "schedule.sh") servername
-*/1 * * * * sh /data/radio/script/[update_stream_meta.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/update_stream_meta.sh "update_stream_meta.sh") servername
-0 */1 * * * sh /data/radio/script/[podcast.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/podcast.sh "podcast.sh") servername
+*/1 * * * * sh /data/radio/script/save_mpd_status.sh
+*/1 * * * * sh /data/radio/script/save_icecast_status.sh" servername
+*/1 * * * * sh /data/radio/script/schedule.sh servername
+*/1 * * * * sh /data/radio/script/update_stream_meta.sh servername
+0 */1 * * * sh /data/radio/script/podcast.sh servername
 ```
 
-`save mpd status`, `save icecast staus` and `update stream meta` are fast loops under 2 Seconds.
+[save_mpd_status.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/save_mpd_status.sh "save_mpd_status.sh"),
+[save_icecast_status.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/save_icecast_status.sh "save_icecast_status.sh") and
+[update_stream_meta.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/update_stream_meta.sh "update_stream_meta.sh") are fast loops under 2 Seconds.
 They writes not on the SD - but into the Ramdisk.
 The Ramdisk is the File Store for the latest Infos. Icecast has a JSON Output for this.
 The Infos for MPD is the Output from MPC.
@@ -275,7 +277,7 @@ The Infos for MPD is the Output from MPC.
 The Apache and PHP read this Outputs if needed. That means that no Web-Request to get a Status goes directly to MPD or to Icecast.
 The Cronjobs collect this Status Informations permanently and make it readable for PHP.
 
-`shedule.sh` and `podcast.sh` are the Cronjob Pages from the Web App.
+[schedule.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/schedule.sh "schedule.sh") and [podcast.sh](https://github.com/seekwhencer/Playlist-Automation/blob/master/script/podcast.sh "podcast.sh") are the Cronjob Pages from the Web App.
 
 Time with Internet Connection
 --------------------------------------
