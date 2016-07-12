@@ -103,7 +103,7 @@ module.exports = function(grunt) {
             build : {
                 options : {
                     fontPath : 'build/css/fonts/',
-                    httpPath: 'css/fonts/',
+                    httpPath: 'fonts/',
                     cssFile : 'build/css/fonts.css',
                     fonts : [{
                         family : 'Roboto',
