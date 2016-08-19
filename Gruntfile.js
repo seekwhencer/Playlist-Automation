@@ -4,16 +4,6 @@
  * Matthias Kallenbach
  * 2016
  *
- * Installation:
- *
- * npm install grunt --save-dev
- * npm install grunt-contrib-jshint --save-dev
- * npm install grunt-contrib-less --save-dev
- * npm install grunt-contrib-watch --save-dev
- * npm install grunt-bower-task --save-dev
- * npm install grunt-bowercopy --save-dev
- * npm install grunt-contrib-csslint --save-dev
- * npm install grunt-sync --save
  *
  */
 module.exports = function(grunt) {
@@ -185,7 +175,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-google-fonts');
 
     grunt.registerTask('default', ['jshint', 'watch', 'bowercopy', 'less', 'csslint', 'sync']);
-    //grunt.registerTask('default', ['jshint', 'watch', 'bowercopy', 'less', 'csslint', 'sync']);
 
     /**
      * Export the "build" folder in the "htdocs" folder

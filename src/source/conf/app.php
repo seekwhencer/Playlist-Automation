@@ -15,5 +15,5 @@
         'path_data'         => 'data/',
         'station_config'    => 'station_config.json',
         
-        'user_secret'       => 'change!me',
+        'user_secret'       => '123456',
     );
