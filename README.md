@@ -107,8 +107,8 @@ sudo /etc/init.d/icecast2 reload
 Configure MPD
 --------------------------------------
 ```bash
-sudo mv /etc/mpd.conf /data/radio/scripts/conf/mpd.conf
-sudo nano /data/radio/scripts/conf/mpd_playlist.conf
+sudo mv /etc/mpd.conf /data/radio/script/conf/mpd.conf
+sudo nano /data/radio/script/conf/mpd_playlist.conf
 ```
 - Use this
 ```bash
@@ -159,7 +159,7 @@ Configure Apache
 --------------------------------------
 - Move site config to apache folder
 ```bash
-sudo cp /data/radio/scripts/conf/radio.conf /etc/apache2/sites-enabled/servername.conf
+sudo cp /data/radio/script/conf/radio.conf /etc/apache2/sites-enabled/servername.conf
 ```
 
 - Remove default apache host
